@@ -11,7 +11,7 @@ const HeroAdmin = () => {
 
   useEffect(() => {
     setIsLoading(true); // Mulai loading
-    fetch("https://smpn1tamansari-api.vercel.app/api/hero")
+    fetch("http://localhost:5000/api/hero")
       .then((response) => response.json())
       .then((data) => {
         setHero(data);
@@ -29,7 +29,7 @@ const HeroAdmin = () => {
 
     setIsUpdating(true);
 
-    fetch(`https://smpn1tamansari-api.vercel.app/api/hero/${hero.id}`, {
+    fetch(`http://localhost:5000/api/hero/${hero.id}`, {
       method: "PUT",
       body: formData,
     })
@@ -62,7 +62,7 @@ const HeroAdmin = () => {
     <div className="bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto p-4">
         <h2 className="text-4xl font-semibold text-center mb-8 text-gray-800">
-          Admin - Edit Bagian Hero
+          Admin - Edit Bagian Welcome
         </h2>
 
         {hero && (
@@ -75,11 +75,11 @@ const HeroAdmin = () => {
               className="space-y-4"
             >
               <label className="block text-gray-700 font-medium">
-                Pesan Sambutan:
+                Nama Instansi
               </label>
               <input
                 type="text"
-                placeholder="Pesan Sambutan"
+                placeholder="Nama Instansi"
                 value={newWelcomeMessage}
                 onChange={(e) => setNewWelcomeMessage(e.target.value)}
                 className="w-full p-3 border border-gray-300 rounded-md"
@@ -120,7 +120,7 @@ const HeroAdmin = () => {
         {hero && (
           <div className="mt-8">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-              Bagian Hero Saat Ini
+              Bagian Welcome Saat Ini
             </h3>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h4 className="text-3xl font-bold">{hero.welcomeMessage}</h4>

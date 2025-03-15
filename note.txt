@@ -1,26 +1,22 @@
-Website Sekolahan SMPN 1 Tamansari
-# home
+Website UKM Seni Religi UNS
+# beranda
 	- selamat datang + foto (slider)
-	- berita dan informasi terbaru
-	- ekstraulikuler (sekilas)
-	- kalender pendidikan (tahun ini)
-	- profil alumnni (opsional)
+	- [berita dan informasi terbaru] artikel terbaru 
+	- [profil alumnni] => agenda 					
 
 # profil
-	- sambutan kepala sekolah
+	- [sambutan kepala sekolah] tentang seni religi
 	- sejarah
-	- visi misi
-	- informasi (identitas sekolahan, akreditasi, jumlah guru, tenaga pendidikan, siswa)
-	- struktur organisasi (Kepala Sekolah, Komite sekolah, Kepala Tata Usaha, Wakasek Kurikulum, Wakasek Humas)
-	- staff dan guru + foto
- 
-# layanan
-	- ekstrakulikuler (penjabaran)
-	- galeri
-	- sarana prasarana
+	- logo (penjelasan)																
 
-# berita
-	- berita terbaru (akademik, prestasi)
-	- info sekolah (dari sekolahan untuk siswa, misal pengumuman atau kegiatan)
+# [layanan] kepengurusan
+	- struktur organisasi										
+	- [ekstrakulikuler] PHT + visi misi ketua/wakil ketua		(X)
+	- [sarana prasarana] divisi staff							(X)
+
+# [berita] lainnya
+	- [berita terbaru] artikel 
+	- kelas (Hadroh Putra, Hadroh Putri, Vokal, Ratoe Jaroh)	(X)
+	- [layanan/galeri] galeri
 
 # kontak

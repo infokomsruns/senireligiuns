@@ -17,7 +17,7 @@ const PengumumanAdmin = () => {
   // Fetch pengumuman dari backend
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://smpn1tamansari-api.vercel.app/api/announcements")
+    fetch("http://localhost:5000/api/announcements")
       .then((response) => response.json())
       .then((data) => setAnnouncements(data))
       .finally(() => setIsLoading(false));
@@ -33,7 +33,7 @@ const PengumumanAdmin = () => {
     };
 
     fetch(
-      `https://smpn1tamansari-api.vercel.app/api/announcements/${selectedAnnouncement.id}`,
+      `http://localhost:5000/api/announcements/${selectedAnnouncement.id}`,
       {
         method: "PUT",
         headers: {
@@ -58,7 +58,7 @@ const PengumumanAdmin = () => {
   // Handle delete pengumuman
   const handleDelete = (id) => {
     setIsDeleting(true);
-    fetch(`https://smpn1tamansari-api.vercel.app/api/announcements/${id}`, {
+    fetch(`http://localhost:5000/api/announcements/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -83,7 +83,7 @@ const PengumumanAdmin = () => {
   // Handle create pengumuman
   const handleCreatePengumuman = () => {
     setIsCreating(true);
-    fetch("https://smpn1tamansari-api.vercel.app/api/announcements", {
+    fetch("http://localhost:5000/api/announcements", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

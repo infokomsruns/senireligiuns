@@ -28,7 +28,7 @@ const OrganizationalStructureAdmin = () => {
   // Fetch structure data from backend
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://smpn1tamansari-api.vercel.app/api/strukturOrganisasi")
+    fetch("http://localhost:5000/api/strukturOrganisasi")
       .then((response) => response.json())
       .then((data) => setStructure(data))
       .finally(() => setIsLoading(false));
@@ -42,7 +42,7 @@ const OrganizationalStructureAdmin = () => {
     formData.append("role", newRole);
     if (newImage) formData.append("image", newImage);
 
-    fetch("https://smpn1tamansari-api.vercel.app/api/strukturOrganisasi", {
+    fetch("http://localhost:5000/api/strukturOrganisasi", {
       method: "POST",
       body: formData,
     })
@@ -66,7 +66,7 @@ const OrganizationalStructureAdmin = () => {
       formData.append("image", selectedStructure.image);
 
     fetch(
-      `https://smpn1tamansari-api.vercel.app/api/strukturOrganisasi/${selectedStructure.id}`,
+      `http://localhost:5000/api/strukturOrganisasi/${selectedStructure.id}`,
       {
         method: "PUT",
         body: formData,
@@ -85,7 +85,7 @@ const OrganizationalStructureAdmin = () => {
   // Handle delete structure
   const handleDelete = (id) => {
     setIsDeleting(true);
-    fetch(`https://smpn1tamansari-api.vercel.app/api/strukturOrganisasi/${id}`, {
+    fetch(`http://localhost:5000/api/strukturOrganisasi/${id}`, {
       method: "DELETE",
     }).then(() => {
       setStructure(structure.filter((item) => item.id !== id));

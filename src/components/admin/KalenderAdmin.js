@@ -10,7 +10,7 @@ const KalenderAdmin = () => {
 
   useEffect(() => {
     setIsLoading(true); // Mulai loading saat pengambilan data
-    fetch("https://smpn1tamansari-api.vercel.app/api/kalender")
+    fetch("http://localhost:5000/api/kalender")
       .then((response) => response.json())
       .then((data) => {
         setKalender(data[0]);
@@ -26,7 +26,7 @@ const KalenderAdmin = () => {
 
     setIsUpdating(true); // Mulai loading saat mengupdate
 
-    fetch(`https://smpn1tamansari-api.vercel.app/api/kalender/${kalender.id}`, {
+    fetch(`http://localhost:5000/api/kalender/${kalender.id}`, {
       method: "PUT",
       body: formData,
     })
@@ -55,13 +55,13 @@ const KalenderAdmin = () => {
     <div className="bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto p-4">
         <h2 className="text-4xl font-semibold text-center mb-8 text-gray-800">
-          Admin - Kalender Pendidikan
+          Admin - Struktur Organisasi
         </h2>
 
         {kalender && (
           <div className="mb-8">
             <h3 className="text-2xl font-semibold text-gray-800">
-              Perbarui Kalender Pendidikan
+              Perbarui Struktur Organisasi
             </h3>
             <form
               onSubmit={(e) => {
@@ -71,7 +71,7 @@ const KalenderAdmin = () => {
               className="space-y-4"
             >
               <label className="block text-gray-700 font-medium">
-                Judul Kalender Pendidikan
+                Tahun Struktur Organisasi
               </label>
               <input
                 type="text"
@@ -82,7 +82,7 @@ const KalenderAdmin = () => {
                 required
               />
               <label className="block text-gray-700 font-medium">
-                Unggah File Kalender Baru
+                Unggah File Struktur Organisasi Baru
               </label>
               <input
                 type="file"
@@ -93,7 +93,7 @@ const KalenderAdmin = () => {
                 type="submit"
                 className="px-6 py-2 bg-blue-600 text-white rounded-md"
               >
-                Perbarui Kalender
+                Perbarui Struktur Organisasi
               </button>
             </form>
           </div>
@@ -102,7 +102,7 @@ const KalenderAdmin = () => {
         {kalender && (
           <div className="mt-8">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-              Kalender Pendidikan Saat Ini
+              Struktur Organisasi Saat Ini
             </h3>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h4 className="text-3xl font-bold">{kalender.title}</h4>
@@ -114,7 +114,7 @@ const KalenderAdmin = () => {
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:text-blue-800"
                   >
-                    Lihat Kalender
+                    Lihat Struktur Organisasi
                   </a>
                 </div>
               )}

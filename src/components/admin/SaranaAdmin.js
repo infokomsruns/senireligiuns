@@ -12,11 +12,33 @@ const SaranaAdmin = () => {
   const [isUpdating, setIsUpdating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [nameError, setNameError] = useState("");
+  const [newDescription, setNewDescription] = useState("");
+
+  const divisi_staff = [
+    "Kepala Divisi Keaparatan Rumah Tangga",
+    "Staff Divisi Keaparatan Rumah Tangga",
+    "Kepala Divisi Kaderisasi Rumah Tangga",
+    "Staff Divisi Kaderisasi Rumah Tangga",
+    "Kepala Divisi Kajian Dakwah",
+    "Staff Divisi Kajian Dakwah",
+    "Kepala Divisi Event Dakwah",
+    "Staff Divisi Event Dakwah",
+    "Kepala Divisi Media Informasi dan Komunikasi",
+    "Staff Divisi Media Informasi dan Komunikasi",
+    "Kepala Divisi Humas Informasi dan Komunikasi",
+    "Staff Divisi Humas Informasi dan Komunikasi",
+    "Kepala Divisi Hadrah Pengembangan Sumber Daya Manusia",
+    "Staff Divisi Hadrah Pengembangan Sumber Daya Manusia",
+    "Kepala Divisi Vokal Pengembangan Sumber Daya Manusia",
+    "Staff Divisi Vokal Pengembangan Sumber Daya Manusia",
+    "Kepala Divisi Ratoh Jaroe Pengembangan Sumber Daya Manusia",
+    "Staff Divisi Ratoh Jaroe Pengembangan Sumber Daya Manusia",
+  ];
 
   // Fetch sarana from backend
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://smpn1tamansari-api.vercel.app/api/sarana")
+    fetch("http://localhost:5000/api/sarana")
       .then((response) => response.json())
       .then((data) => setSarana(data))
       .finally(() => setIsLoading(false));
@@ -27,9 +49,10 @@ const SaranaAdmin = () => {
     setIsCreating(true); // Mulai membuat sarana
     const formData = new FormData();
     formData.append("name", newName);
+    formData.append("description", newDescription);
     if (newImage) formData.append("image", newImage);
 
-    fetch("https://smpn1tamansari-api.vercel.app/api/sarana", {
+    fetch("http://localhost:5000/api/sarana", {
       method: "POST",
       body: formData,
     })
@@ -37,29 +60,33 @@ const SaranaAdmin = () => {
       .then((data) => {
         setSarana([...sarana, data]);
         setNewName("");
+        setNewDescription("");
         setNewImage(null);
       })
-      .finally(() => setIsCreating(false)); // Selesai membuat sarana
+      .finally(() => setIsCreating(false));
   };
+
+  const handleEditDescriptionChange = (e) => {
+    const newDesc = e.target.value;
+    setSelectedSarana((prev) => ({ ...prev, description: newDesc }));
+  };  
 
   // Handle update sarana
   const handleUpdateSarana = () => {
-    setIsUpdating(true); // Mulai memperbarui sarana
+    setIsUpdating(true); 
     const formData = new FormData();
     formData.append("name", selectedSarana.name);
+    formData.append("description", selectedSarana.description);
     if (selectedSarana.image instanceof File) {
       formData.append("image", selectedSarana.image);
     } else if (newImage) {
       formData.append("image", newImage);
     }
 
-    fetch(
-      `https://smpn1tamansari-api.vercel.app/api/sarana/${selectedSarana.id}`,
-      {
-        method: "PUT",
-        body: formData,
-      }
-    )
+    fetch(`http://localhost:5000/api/sarana/${selectedSarana.id}`, {
+      method: "PUT",
+      body: formData,
+    })
       .then((response) => response.json())
       .then((data) => {
         setSarana(sarana.map((item) => (item.id === data.id ? data : item)));
@@ -71,7 +98,7 @@ const SaranaAdmin = () => {
   // Handle delete sarana
   const handleDelete = (id) => {
     setIsDeleting(true); // Mulai menghapus sarana
-    fetch(`https://smpn1tamansari-api.vercel.app/api/sarana/${id}`, {
+    fetch(`http://localhost:5000/api/sarana/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -122,13 +149,13 @@ const SaranaAdmin = () => {
     <div className="bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto p-4">
         <h2 className="text-4xl font-semibold text-center mb-8 text-gray-800">
-          Admin - Kelola Sarana
+          Admin - Kelola Divisi Staff
         </h2>
 
         {/* Add new sarana form */}
         <div className="mb-8">
           <h3 className="text-2xl font-semibold text-gray-800">
-            Tambah Sarana
+            Tambah Divisi Staff
           </h3>
           <form
             onSubmit={(e) => {
@@ -138,16 +165,31 @@ const SaranaAdmin = () => {
             className="space-y-4"
           >
             {/* Keterangan Nama */}
-            <label className="block text-gray-700">Nama Sarana</label>
+            <label className="block text-gray-700">Nama Divisi Staff</label>
             <input
               type="text"
-              placeholder="Nama Sarana"
+              placeholder="Nama Divisi Staff"
               value={newName}
               onChange={handleNewNameChange}
               className="w-full p-3 border border-gray-300 rounded-md"
               required
             />
             {nameError && <p className="text-red-500 text-sm">{nameError}</p>}
+
+            <label className="block text-gray-700">Jabatan</label>
+            <select
+              value={newDescription}
+              onChange={(e) => setNewDescription(e.target.value)}
+              className="w-full p-3 border border-gray-300 rounded-md"
+              required
+            >
+              <option value="">Pilih Jabatan</option>
+              {divisi_staff.map((desc, index) => (
+                <option key={index} value={desc}>
+                  {desc}
+                </option>
+              ))}
+            </select>
 
             <input
               type="file"
@@ -159,14 +201,14 @@ const SaranaAdmin = () => {
               className="px-6 py-2 bg-blue-600 text-white rounded-md"
               disabled={nameError !== ""}
             >
-              Tambah Sarana
+              Tambah Divisi Staff
             </button>
           </form>
         </div>
 
-        {/* Sarana Table */}
+        {/* Divisi Staff Table */}
         <h3 className="text-2xl font-semibold text-gray-800 mb-6">
-          Daftar Sarana
+          Daftar Divisi Staff
         </h3>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white shadow-md rounded-lg">
@@ -174,6 +216,7 @@ const SaranaAdmin = () => {
               <tr>
                 <th className="px-4 py-2 text-left text-gray-800">Nama</th>
                 <th className="px-4 py-2 text-left text-gray-800">Gambar</th>
+                <th className="px-4 py-2 text-left text-gray-800">Jabatan</th>
                 <th className="px-4 py-2 text-gray-800">Aksi</th>
               </tr>
             </thead>
@@ -190,6 +233,7 @@ const SaranaAdmin = () => {
                       />
                     )}
                   </td>
+                  <td className="px-4 py-2">{item.description}</td>
                   <td className="px-4 py-2">
                     <button
                       onClick={() => openModal(item)}
@@ -214,7 +258,7 @@ const SaranaAdmin = () => {
         {isModalOpen && (
           <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
             <div className="bg-white p-6 rounded-md shadow-lg">
-              <h3 className="text-2xl font-semibold mb-4">Edit Sarana</h3>
+              <h3 className="text-2xl font-semibold mb-4">Edit Divisi Staff</h3>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -222,7 +266,7 @@ const SaranaAdmin = () => {
                 }}
                 className="space-y-4"
               >
-                <label className="block text-gray-700">Nama Sarana</label>
+                <label className="block text-gray-700">Nama Divisi Staff</label>
                 <input
                   type="text"
                   value={selectedSarana?.name || ""}
@@ -234,6 +278,21 @@ const SaranaAdmin = () => {
                   <p className="text-red-500 text-sm">{nameError}</p>
                 )}
 
+                <label className="block text-gray-700">Jabatan</label>
+                <select
+                  value={selectedSarana?.description || ""}
+                  onChange={handleEditDescriptionChange}
+                  className="w-full p-3 border border-gray-300 rounded-md"
+                  required
+                >
+                  <option value="">Pilih Jabatan</option>
+                  {divisi_staff.map((desc, index) => (
+                    <option key={index} value={desc}>
+                      {desc}
+                    </option>
+                  ))}
+                </select>
+
                 <input
                   type="file"
                   onChange={(e) =>
@@ -244,6 +303,7 @@ const SaranaAdmin = () => {
                   }
                   className="w-full p-3 border border-gray-300 rounded-md"
                 />
+
                 <div className="flex justify-end space-x-4">
                   <button
                     type="button"

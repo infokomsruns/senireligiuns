@@ -24,7 +24,7 @@ const SchoolInfoAdmin = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://smpn1tamansari-api.vercel.app/api/schoolinfo")
+    fetch("http://localhost:5000/api/schoolinfo")
       .then((response) => response.json())
       .then((data) => {
         setSchoolInfo(data);
@@ -72,7 +72,7 @@ const SchoolInfoAdmin = () => {
     };
 
     fetch(
-      `https://smpn1tamansari-api.vercel.app/api/schoolinfo/${schoolInfo.id}`,
+      `http://localhost:5000/api/schoolinfo/${schoolInfo.id}`,
       {
         method: "PUT",
         headers: {

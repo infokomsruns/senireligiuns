@@ -13,7 +13,7 @@ const VisiMisiAdmin = () => {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("https://smpn1tamansari-api.vercel.app/api/visi-misi")
+      .get("http://localhost:5000/api/visi-misi")
       .then((response) => {
         const { visi, misi, id } = response.data || {};
         setFormData({ visi: visi || "", misi: misi || [""], id: id || null });
@@ -50,7 +50,7 @@ const VisiMisiAdmin = () => {
 
     setIsLoading(true); // Show loading when sending the request
     try {
-      await axios.put(`https://smpn1tamansari-api.vercel.app/api/visi-misi/${formData.id}`, formData, {
+      await axios.put(`http://localhost:5000/api/visi-misi/${formData.id}`, formData, {
         headers: { "Content-Type": "application/json" },
       });
       alert("Visi & Misi berhasil diperbarui!");

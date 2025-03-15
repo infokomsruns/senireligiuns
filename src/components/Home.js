@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Autoplay, Navigation } from "swiper/modules";
 import { Link, useNavigate } from "react-router-dom";
-import { FaBullhorn } from "react-icons/fa";
 import LoadingSpinner from "./LoadingSpinner";
 
 const Home = () => {
@@ -13,41 +10,28 @@ const Home = () => {
 
   const [hero, setHero] = useState([]);
   const [news, setNews] = useState([]);
-  const [pengumuman, setPengumuman] = useState([]);
-  const [extracurriculars, setExtracurriculars] = useState([]);
-  const [kalender, setKalender] = useState([]);
   const [alumni, setAlumni] = useState([]);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPengumuman, setSelectedPengumuman] = useState(null);
-
   const [isLoading, setIsLoading] = useState(true);
-  
+
   const handleNavigation = (path, section) => {
-    navigate(path); // Pindah ke halaman yang dimaksud
+    navigate(path);
     setTimeout(() => {
       const element = document.querySelector(section);
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-    }, 100); // Tambahkan jeda untuk memastikan halaman dimuat
+    }, 100);
   };
 
   useEffect(() => {
     Promise.all([
-      fetch("https://smpn1tamansari-api.vercel.app/api/hero").then((res) => res.json()),
-      fetch("https://smpn1tamansari-api.vercel.app/api/news").then((res) => res.json()),
-      fetch("https://smpn1tamansari-api.vercel.app/api/announcements").then((res) => res.json()),
-      fetch("https://smpn1tamansari-api.vercel.app/api/extracurriculars").then((res) => res.json()),
-      fetch("https://smpn1tamansari-api.vercel.app/api/kalender").then((res) => res.json()),
-      fetch("https://smpn1tamansari-api.vercel.app/api/alumni").then((res) => res.json()),
+      fetch("http://localhost:5000/api/hero").then((res) => res.json()),
+      fetch("http://localhost:5000/api/news").then((res) => res.json()),
+      fetch("http://localhost:5000/api/alumni").then((res) => res.json()),
     ])
-      .then(([heroData, newsData, pengumumanData, extracurricularsData, kalenderData, alumniData]) => {
+      .then(([heroData, newsData, alumniData]) => {
         setHero(heroData);
         setNews(newsData);
-        setPengumuman(pengumumanData);
-        setExtracurriculars(extracurricularsData);
-        setKalender(kalenderData);
         setAlumni(alumniData);
       })
       .finally(() => setIsLoading(false));
@@ -60,19 +44,9 @@ const Home = () => {
     return text;
   };
 
-  const openModal = (item) => {
-    setSelectedPengumuman(item);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedPengumuman(null);
-  };
-
   if (isLoading) {
     return (
-      <div className="fixed inset-0 bg-gray-100 flex justify-center items-center z-50">
+      <div className="fixed inset-0 bg-gradient-to-r from-blue-100 to-blue-50 flex justify-center items-center z-50">
         <LoadingSpinner />
       </div>
     );
@@ -80,52 +54,74 @@ const Home = () => {
 
   return (
     <div>
-      {/* Hero Section */}
-      <div id="home" className="relative bg-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center h-screen">
+      {/* Hero Section with Gradient Background */}
+      <div
+        id="home"
+        className="relative bg-gradient-to-br from-blue-50 via-blue-50 to-indigo-50"
+      >
+        <div className="absolute inset-0 bg-pattern opacity-5"></div>
+        <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center min-h-screen py-16 px-4">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
-            className="text-gray-800 text-center md:text-left md:w-1/2 p-4"
+            className="text-gray-800 text-center md:text-left md:w-1/2 p-4 z-10"
           >
-            <p className="text-6xl font-extrabold tracking-tight">
-              Selamat Datang di {hero.welcomeMessage}
+            <h1 className="text-4xl md:text-5xl font-extrabold text-blue-900">
+              Selamat Datang di Website {hero.welcomeMessage}
+            </h1>
+            <p className="mt-6 text-2xl font-light text-gray-600">
+              {hero.description}
             </p>
-            <p className="mt-6 text-2xl font-light">{hero.description}</p>
-            <button
-              onClick={() => handleNavigation("/profil", "#sambbutan")}
-              className="mt-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition duration-300"
-            >
-              Profil Kami
-            </button>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              <button
+                onClick={() => handleNavigation("/profil", "#sambbutan")}
+                className="px-8 py-4 bg-gradient-to-r from-blue-800 to-blue-900 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition duration-300"
+              >
+                Profil Kami
+              </button>
+            </div>
           </motion.div>
 
-          {/* Image Section */}
+          {/* Image Section with Float Animation */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
-            className="md:w-1/2 flex justify-center"
+            className="md:w-1/2 flex justify-center relative z-10"
           >
-            <img
-              src={hero.image}
-              alt="SMPN 1 Tamansari"
-              className="rounded-lg shadow-lg w-2/3 md:w-3/4 hover:shadow-xl hover:scale-105 transition duration-300"
+            <motion.img
+              animate={{
+                y: [0, -15, 0],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 4,
+                ease: "easeInOut",
+              }}
+              src={`http://localhost:5000${hero.image}`}
+              alt="Seni Religi UNS"
+              className="rounded-2xl shadow-2xl w-4/5 md:w-4/5 object-cover border-4 border-white"
             />
+            {/* Decorative elements */}
+            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-indigo-100 rounded-full opacity-50 z-0"></div>
+            <div className="absolute -top-4 -left-4 w-24 h-24 bg-blue-100 rounded-full opacity-50 z-0"></div>
           </motion.div>
         </div>
       </div>
 
-      {/* Berita dan Pengumuman Terbaru Section */}
-      <div className="bg-gray-50">
+      {/* News Section with Card Design */}
+      <div className="bg-white py-20">
         <div className="max-w-7xl mx-auto p-4">
-          <section className="my-16">
-            <h2 className="text-4xl font-extrabold text-center mb-10 text-gray-800">
-              Berita dan Pengumuman Terbaru
-            </h2>
+          <section className="mb-16">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-extrabold mb-2 text-gray-800">
+                Artikel Terbaru
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto"></div>
+            </div>
 
-            {/* News Section */}
+            {/* News Cards with Hover Effects */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {news
                 .sort(
@@ -133,23 +129,30 @@ const Home = () => {
                 )
                 .slice(0, 3)
                 .map((item, index) => (
-                  <div
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
                     key={index}
-                    className="bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 overflow-hidden flex flex-col"
+                    className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden flex flex-col group"
                   >
-                    {/* Gambar */}
-                    <div className="w-full h-56 bg-gray-200">
+                    {/* Image with overlay */}
+                    <div className="w-full h-56 bg-gray-200 relative overflow-hidden">
                       {item.image && (
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="w-full h-full object-cover"
-                        />
+                        <>
+                          <img
+                            src={`http://localhost:5000${item.image}`}
+                            alt={item.title}
+                            className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </>
                       )}
                     </div>
-                    {/* Konten */}
-                    <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">
+
+                    {/* Content with hover effect */}
+                    <div className="p-6 flex flex-col flex-grow border-t border-gray-100">
+                      <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-900 transition-colors duration-300">
                         {truncateText(item.title, 80)}
                       </h3>
                       <p className="text-gray-500 text-sm mb-4">
@@ -162,245 +165,94 @@ const Home = () => {
                           }
                         )}
                       </p>
-                      <div className="mt-auto text-right">
+                      <div className="mt-auto">
                         <Link
                           to={`/berita/${item.id}`}
-                          className="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
+                          className="inline-flex items-center text-sm font-medium text-blue-800 hover:text-blue-900 transition-colors duration-300"
                         >
-                          Selengkapnya →
+                          Selengkapnya
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 ml-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
                         </Link>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
             </div>
 
-            {/* Pengumuman Sekolah Section */}
-            <div className="my-16">
-              <h3 className="text-3xl font-semibold text-center text-gray-800 mb-6">
-                Pengumuman Sekolah
-              </h3>
-              <Swiper
-                modules={[Navigation]}
-                spaceBetween={30}
-                slidesPerView={pengumuman.length === 1 ? 1 : 3}
-                centeredSlides={pengumuman.length === 1}
-                navigation
-                breakpoints={{
-                  640: { slidesPerView: 1 },
-                  768: { slidesPerView: pengumuman.length === 1 ? 1 : 2 },
-                  1024: { slidesPerView: pengumuman.length === 1 ? 1 : 3 },
-                }}
+            {/* View all button */}
+            <div className="text-center mt-12">
+              <Link
+                to="/berita"
+                className="inline-flex items-center px-6 py-3 border border-blue-300 text-blue-700 bg-blue-50 rounded-full hover:bg-blue-700 hover:text-white transition duration-300"
               >
-                {pengumuman
-                  .sort(
-                    (a, b) =>
-                      new Date(b.publishedDate) - new Date(a.publishedDate)
-                  )
-                  .map((item, index) => (
-                    <SwiperSlide key={index} className="mb-6">
-                      <motion.div
-                        whileHover={{ scale: 1.01 }}
-                        className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 h-48"
-                      >
-                        <div className="flex items-center mb-4">
-                          <FaBullhorn className="text-blue-600 text-3xl mr-4" />
-                          <div className="flex-1">
-                            <h3 className="font-semibold text-xl text-gray-800">
-                              {truncateText(item.title, 20)}
-                            </h3>
-                            <p className="text-gray-500 text-sm">
-                              {new Date(item.publishedDate).toLocaleDateString(
-                                "id-ID",
-                                {
-                                  day: "numeric",
-                                  month: "long",
-                                  year: "numeric",
-                                }
-                              )}
-                            </p>
-                          </div>
-                        </div>
-                        <p className="text-gray-700 text-base mb-4 flex-grow">
-                          {truncateText(item.description, 75)}
-                        </p>
-                        {/* Positioned button at the bottom-right */}
-                        <button
-                          onClick={() => openModal(item)}
-                          className="absolute bottom-4 right-4 px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition-all"
-                        >
-                          Lihat
-                        </button>
-                      </motion.div>
-                    </SwiperSlide>
-                  ))}
-              </Swiper>
+                Lihat Semua Artikel
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 ml-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
             </div>
           </section>
         </div>
       </div>
 
-      {/* Modal */}
-      {isModalOpen && selectedPengumuman && (
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center z-50">
-          <div
-            className="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center z-50"
-            onClick={(e) => {
-              if (e.target === e.currentTarget) closeModal();
-            }}
-          >
-            <div className="bg-white p-8 rounded-lg w-1/2 relative">
-              {/* Tombol Close di Kiri Atas */}
-              <button
-                onClick={closeModal}
-                className="absolute top-3 right-5 text-gray-600 text-3xl font-semibold hover:text-gray-900 transition-all"
-              >
-                &times;
-              </button>
-
-              <h3 className="font-semibold text-3xl text-gray-800 mb-4">
-                {selectedPengumuman.title}
-              </h3>
-              <p className="text-gray-500 text-sm mb-4">
-                {new Date(selectedPengumuman.publishedDate).toLocaleDateString(
-                  "id-ID",
-                  {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  }
-                )}
-              </p>
-
-              <div
-                className="text-gray-700"
-                dangerouslySetInnerHTML={{
-                  __html: selectedPengumuman.description,
-                }}
-              />
-            </div>
+      {/* Agenda Section with Modern Card Design */}
+      <div className="bg-gradient-to-br from-blue-50 via-blue-50 to-indigo-50 py-20">
+        <div className="max-w-7xl mx-auto text-center px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-extrabold mb-2 text-gray-800">
+              Agenda Kami
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-sky-400 to-indigo-500 mx-auto"></div>
           </div>
-        </div>
-      )}
 
-      {/* Ekstrakurikuler Section */}
-      <div className="bg-gray-100">
-        <div className="max-w-7xl mx-auto p-4">
-          <section className="my-16">
-            <h2 className="text-4xl font-semibold text-center mb-10 text-gray-800">
-              Ekstrakurikuler
-            </h2>
-
-            <div className="relative">
-              {/* Overlay Gradient */}
-              <div className="absolute top-0 left-0 w-60 h-full bg-gradient-to-r from-gray-100 to-transparent z-10 pointer-events-none"></div>
-              <div className="absolute top-0 right-0 w-60 h-full bg-gradient-to-l from-gray-100 to-transparent z-10 pointer-events-none"></div>
-
-              {/* Swiper Slider */}
-              <Swiper
-                modules={[Navigation, Autoplay]}
-                spaceBetween={30}
-                slidesPerView={1} // Menampilkan sebagian slide samping
-                centeredSlides={true} // Memusatkan slide aktif
-                loop={true} // Properti untuk membuat slider terhubung terus
-                autoplay={{
-                  delay: 2500, // Waktu delay antara setiap slide dalam milidetik (3000 ms = 3 detik)
-                  disableOnInteraction: false, // Menjaga autoplay meski ada interaksi pengguna
-                }}
-                breakpoints={{
-                  640: { slidesPerView: 1 }, // Pada resolusi kecil, tetap peek view
-                  768: { slidesPerView: 1.5 }, // Menampilkan 2+ sebagian slide
-                  1024: { slidesPerView: 2.5 }, // Menampilkan 3+ sebagian slide
-                }}
-                navigation
-              >
-                {extracurriculars.map((ekstra, index) => (
-                  <SwiperSlide key={index} className="mb-6">
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300"
-                    >
-                      <div className="relative w-full h-48 mb-4">
-                        <img
-                          src={ekstra.image}
-                          alt={ekstra.name}
-                          className="object-cover w-full h-full rounded-lg"
-                        />
-                      </div>
-                      <h3 className="font-bold text-2xl text-center">
-                        {ekstra.name}
-                      </h3>
-                    </motion.div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          </section>
-        </div>
-      </div>
-
-      {/* Kalender Pendidikan Section */}
-      <div className="bg-gray-50">
-        <div className="max-w-7xl mx-auto p-4">
-          <section className="my-16">
-            <h2 className="text-4xl font-semibold text-center mb-10 text-gray-800">
-              Kalender Pendidikan
-            </h2>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="bg-white p-4 rounded-lg shadow-lg"
-            >
-              <p className="text-xl">
-                Kalender pendidikan untuk tahun ajaran {kalender[0]?.title}:
-              </p>
-              {/* PDF Viewer */}
-              <div className="flex justify-center items-center">
-                {kalender[0]?.file ? (
-                  <div className="mt-6">
-                    <a
-                      href={kalender[0]?.file}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 text-center hover:text-blue-800"
-                    >
-                      Lihat Kalender
-                    </a>
-                  </div>
-                ) : (
-                  <p>Loading PDF...</p>
-                )}
-              </div>
-            </motion.div>
-          </section>
-        </div>
-      </div>
-
-      {/* Alumni Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-gray-800 mb-12">
-            Alumni Kami
-          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {alumni.map((item, index) => (
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 key={index}
-                className="bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+                className="relative bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition duration-300"
               >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-56 object-cover rounded-t-lg"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800">
+                <div className="relative overflow-hidden">
+                  <img
+                    src={`http://localhost:5000${item.image}`}
+                    alt={item.title}
+                    className="w-full h-64 object-cover transition duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                {/* Teks hanya muncul saat hover */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+                  <h3 className="text-2xl font-bold text-blue-50 text-center">
                     {item.title}
                   </h3>
-                  <p className="text-gray-500 text-sm">{item.description}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

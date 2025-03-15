@@ -16,7 +16,7 @@ const AlumniAdmin = () => {
   // Fetch alumni from backend
   useEffect(() => {
     setIsLoading(true); 
-    fetch("https://smpn1tamansari-api.vercel.app/api/alumni")
+    fetch("http://localhost:5000/api/alumni")
       .then((response) => response.json())
       .then((data) => setAlumni(data))
       .finally(() => setIsLoading(false)); 
@@ -30,7 +30,7 @@ const AlumniAdmin = () => {
     if (selectedAlumni.image) formData.append("image", selectedAlumni.image);
 
     setIsUpdating(true); // Start the loading spinner for update
-    fetch(`https://smpn1tamansari-api.vercel.app/api/alumni/${selectedAlumni.id}`, {
+    fetch(`http://localhost:5000/api/alumni/${selectedAlumni.id}`, {
       method: "PUT",
       body: formData,
     })
@@ -52,7 +52,7 @@ const AlumniAdmin = () => {
 
   const handleDelete = (id) => {
     setIsDeleting(true); // Start the loading spinner for delete
-    fetch(`https://smpn1tamansari-api.vercel.app/api/alumni/${id}`, {
+    fetch(`http://localhost:5000/api/alumni/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -81,7 +81,7 @@ const AlumniAdmin = () => {
     if (newImage) formData.append("image", newImage);
 
     setIsCreating(true); // Start the loading spinner for create
-    fetch("https://smpn1tamansari-api.vercel.app/api/alumni", {
+    fetch("http://localhost:5000/api/alumni", {
       method: "POST",
       body: formData,
     })
@@ -107,13 +107,13 @@ const AlumniAdmin = () => {
     <div className="bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto p-4">
         <h2 className="text-4xl font-semibold text-center mb-8 text-gray-800">
-          Admin - Kelola Alumni
+          Admin - Kelola Agenda
         </h2>
 
         {/* Add new alumni form */}
         <div className="mb-8">
           <h3 className="text-2xl font-semibold text-gray-800">
-            Tambah Alumni
+            Tambah Agenda
           </h3>
           <form
             onSubmit={(e) => {
@@ -122,24 +122,24 @@ const AlumniAdmin = () => {
             }}
             className="space-y-4"
           >
-            <label className="block text-gray-600">Nama Alumni</label>
+            <label className="block text-gray-600">Nama Agenda</label>
             <input
               type="text"
-              placeholder="Nama Alumni"
+              placeholder="Nama Agenda"
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-md"
               required
             />
-            <label className="block text-gray-600">Deskripsi Alumni</label>
+            <label className="block text-gray-600">Deskripsi Agenda</label>
             <textarea
-              placeholder="Deskripsi Alumni"
+              placeholder="Deskripsi Agenda"
               value={newDescription}
               onChange={handleDescriptionChange}
               className="w-full p-3 border border-gray-300 rounded-md"
               rows="4"
             />
-            <label className="block text-gray-600">Gambar Alumni</label>
+            <label className="block text-gray-600">Gambar Agenda</label>
             <input
               type="file"
               onChange={handleFileChange}
@@ -149,14 +149,14 @@ const AlumniAdmin = () => {
               type="submit"
               className="px-6 py-2 bg-blue-600 text-white rounded-md"
             >
-              Tambah Alumni
+              Tambah Agenda
             </button>
           </form>
         </div>
 
-        {/* Alumni Table */}
+        {/* Agenda Table */}
         <h3 className="text-2xl font-semibold text-gray-800 mb-6">
-          Daftar Alumni
+          Daftar Agenda
         </h3>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white shadow-md rounded-lg">
@@ -206,7 +206,7 @@ const AlumniAdmin = () => {
         {isModalOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
             <div className="bg-white p-6 rounded-lg w-1/3">
-              <h3 className="text-2xl font-semibold mb-4">Edit Alumni</h3>
+              <h3 className="text-2xl font-semibold mb-4">Edit Agenda</h3>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -214,7 +214,7 @@ const AlumniAdmin = () => {
                 }}
                 className="space-y-4"
               >
-                <label className="block text-gray-600">Nama Alumni</label>
+                <label className="block text-gray-600">Nama Agenda</label>
                 <input
                   type="text"
                   value={selectedAlumni.title}
@@ -226,7 +226,7 @@ const AlumniAdmin = () => {
                   }
                   className="w-full p-3 border border-gray-300 rounded-md"
                 />
-                <label className="block text-gray-600">Deskripsi Alumni</label>
+                <label className="block text-gray-600">Deskripsi Agenda</label>
                 <textarea
                   value={selectedAlumni.description}
                   onChange={(e) =>
@@ -238,7 +238,7 @@ const AlumniAdmin = () => {
                   className="w-full p-3 border border-gray-300 rounded-md"
                   rows="4"
                 />
-                <label className="block text-gray-600">Gambar Alumni</label>
+                <label className="block text-gray-600">Gambar Agenda</label>
                 <input
                   type="file"
                   onChange={(e) =>

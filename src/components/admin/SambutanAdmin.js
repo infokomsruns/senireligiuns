@@ -15,7 +15,7 @@ const SambutanAdmin = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://smpn1tamansari-api.vercel.app/api/headmaster-message")
+    fetch("http://localhost:5000/api/headmaster-message")
       .then((response) => response.json())
       .then((data) => {
         setHeadmasterMessage(data);
@@ -37,7 +37,7 @@ const SambutanAdmin = () => {
       if (newImage) formData.append("image", newImage);
 
       fetch(
-        `https://smpn1tamansari-api.vercel.app/api/headmaster-message/${headmasterMessage.id}`,
+        `http://localhost:5000/api/headmaster-message/${headmasterMessage.id}`,
         {
           method: "PUT",
           body: formData,
@@ -78,19 +78,19 @@ const SambutanAdmin = () => {
     <div className="bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto p-4">
         <h2 className="text-4xl font-semibold text-center mb-8 text-gray-800">
-          Admin - Kelola Sambutan Kepala Sekolah
+          Admin - Kelola Tetang Seni Religi
         </h2>
 
         {headmasterMessage && (
           <div className="mb-8">
             <h3 className="text-2xl font-semibold text-gray-800">
-              Update Sambutan Kepala Sekolah
+              Update Tetang Seni Religi
             </h3>
             <form
               onSubmit={handleUpdateHeadmasterMessage}
               className="space-y-4"
             >
-              <label className="block text-gray-600">Teks Sambutan</label>
+              <label className="block text-gray-600">Teks Singkat</label>
               <div>
                 <ReactQuill
                   ref={quillRef}
@@ -101,17 +101,17 @@ const SambutanAdmin = () => {
                 />
               </div>
 
-              <label className="block text-gray-600">Nama Kepala Sekolah</label>
+              <label className="block text-gray-600">Nama Instansi</label>
               <input
                 type="text"
-                placeholder="Nama Kepala Sekolah"
+                placeholder="Nama Instansi"
                 value={newHeadmasterName}
                 onChange={(e) => setNewHeadmasterName(e.target.value)}
                 className="w-full p-3 border border-gray-300 rounded-md"
                 required
               />
               <label className="block text-gray-600">
-                Gambar Kepala Sekolah
+                Gambar Instansi
               </label>
               <input
                 type="file"
@@ -131,7 +131,7 @@ const SambutanAdmin = () => {
         {headmasterMessage && (
           <div className="mt-8">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-              Bagian Sambutan Kepala Sekolah Saat Ini
+              Bagian Tetang Seni Religi Saat Ini
             </h3>
             <div className="bg-gradient-to-br from-blue-50 via-white to-gray-100 p-6 rounded-lg shadow-lg border border-gray-200">
               <div className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
@@ -139,7 +139,7 @@ const SambutanAdmin = () => {
                   <div className="flex flex-col items-center">
                     <img
                       src={headmasterMessage.image}
-                      alt="Kepala Sekolah"
+                      alt="Instansi"
                       className="w-40 h-40 object-cover rounded-full border-4 border-blue-500"
                     />
                     <p className="mt-4 text-xl font-bold text-gray-700 text-center">

@@ -45,7 +45,7 @@ const Contact = () => {
     ) {
       setIsLoading(true); 
       try {
-        await axios.post("https://smpn1tamansari-api.vercel.app/api/contacts", formData);
+        await axios.post("http://localhost:5000/api/contacts", formData);
         setIsSubmitted(true);
         setFormData({ name: "", email: "", phone: "", message: "" });
       } catch (error) {
@@ -61,14 +61,11 @@ const Contact = () => {
   }
 
   return (
-    <div id="kontak" className="bg-gray-100 py-24">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
+    <div className="bg-gray-100 py-12">
+      <div className="max-w-7xl mx-auto p-4">
+        <h2 className="text-4xl font-semibold text-center text-gray-800 mb-8">
           Kontak Kami
         </h2>
-
-        {/* Kontainer dengan Background untuk Form dan Peta */}
-        <div className="bg-white p-8 rounded-xl shadow-lg">
           <div className="flex flex-col md:flex-row gap-12">
             {/* Formulir Kontak */}
             <div className="w-full md:w-1/2">
@@ -165,24 +162,23 @@ const Contact = () => {
             {/* Lokasi Sekolah (Maps) */}
             <div className="w-full md:w-1/2">
               <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-                Lokasi Sekolah
+                Lokasi Kami
               </h3>
               <div className="w-full h-[450px] rounded-xl overflow-hidden shadow-lg">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d988.7400167625538!2d110.54269031820914!3d-7.57932594213307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a6978ff5ad815%3A0xb7025ff580f80631!2sSMP%20Negeri%201%20Tamansari%20Boyolali!5e0!3m2!1sid!2sid!4v1734655611054!5m2!1sid!2sid"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d494.3979368866981!2d110.85757428450917!3d-7.5549612375899144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a171d23917ed9%3A0xb9460041569d15fd!2sGedung%20Graha%20UKM%20UNS!5e0!3m2!1sid!2sid!4v1742052581004!5m2!1sid!2sid"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
-                  title="Map of SMP Negeri 1 Tamansari Boyolali"
+                  title="Map of Sekretariat UKM Seni Religi UNS"
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

@@ -17,7 +17,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("https://smpn1tamansari-api.vercel.app/admin/login", credentials);
+      const response = await axios.post("http://localhost:5000/admin/login", credentials);
       const expirationTime = new Date().getTime() + 60 * 60 * 1000;
       localStorage.setItem("authToken", response.data.token);
       localStorage.setItem("tokenExpiration", expirationTime);
@@ -97,7 +97,7 @@ const Login = () => {
             <button
               type="button"
               onClick={handleLogin}
-              className="w-full bg-indigo-600 text-white py-3 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors duration-200"
+              className="w-full bg-blue-600 text-white py-3 px-4 rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-colors duration-200"
             >
               Login
             </button>

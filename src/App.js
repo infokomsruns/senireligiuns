@@ -25,7 +25,6 @@ import SejarahAdmin from './components/admin/SejarahAdmin';
 import VisiMisiAdmin from './components/admin/VisiMisiAdmin';
 import SchoolInfoAdmin from './components/admin/SchoolInfoAdmin';
 import StrukturOrganisasi from './components/admin/OrganizationalStructureAdmin';
-import StaffAdmin from './components/admin/StaffAdmin';
 
 import GaleriAdmin from './components/admin/GaleriAdmin';
 import SaranaAdmin from './components/admin/SaranaAdmin';
@@ -62,7 +61,6 @@ function App() {
         <Route path="/admin-visimisi" element={<PrivateRoute><AdminLayout><VisiMisiAdmin /></AdminLayout></PrivateRoute>} />
         <Route path="/admin-info" element={<PrivateRoute><AdminLayout><SchoolInfoAdmin /></AdminLayout></PrivateRoute>} />
         <Route path="/admin-struktur" element={<PrivateRoute><AdminLayout><StrukturOrganisasi /></AdminLayout></PrivateRoute>} />
-        <Route path="/admin-staff" element={<PrivateRoute><AdminLayout><StaffAdmin /></AdminLayout></PrivateRoute>} />
         <Route path="/admin-galeri" element={<PrivateRoute><AdminLayout><GaleriAdmin /></AdminLayout></PrivateRoute>} />
         <Route path="/admin-sarana" element={<PrivateRoute><AdminLayout><SaranaAdmin /></AdminLayout></PrivateRoute>} />
         <Route path="/admin-pengumuman" element={<PrivateRoute><AdminLayout><PengumumanAdmin /></AdminLayout></PrivateRoute>} />
