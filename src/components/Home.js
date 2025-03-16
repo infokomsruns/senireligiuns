@@ -25,9 +25,15 @@ const Home = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch("https://senireligiuns-api.vercel.app/api/hero").then((res) => res.json()),
-      fetch("https://senireligiuns-api.vercel.app/api/news").then((res) => res.json()),
-      fetch("https://senireligiuns-api.vercel.app/api/alumni").then((res) => res.json()),
+      fetch("https://senireligiuns-api.vercel.app/api/hero").then((res) =>
+        res.json()
+      ),
+      fetch("https://senireligiuns-api.vercel.app/api/news").then((res) =>
+        res.json()
+      ),
+      fetch("https://senireligiuns-api.vercel.app/api/alumni").then((res) =>
+        res.json()
+      ),
     ])
       .then(([heroData, newsData, alumniData]) => {
         setHero(heroData);
@@ -239,13 +245,16 @@ const Home = () => {
                 className="relative bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition duration-300"
               >
                 <div className="relative overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-64 object-cover transition duration-700 group-hover:scale-110"
-                  />
+                  <div className="aspect-w-16 aspect-h-9">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="object-cover transition duration-700 group-hover:scale-110"
+                    />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
+
                 {/* Teks hanya muncul saat hover */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
                   <h3 className="text-2xl font-bold text-blue-50 text-center">
