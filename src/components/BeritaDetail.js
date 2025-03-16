@@ -15,7 +15,7 @@ const BeritaDetail = () => {
   useEffect(() => {
     const fetchBeritaDetail = () => {
       setIsBeritaLoading(true); // Set loading to true before fetching
-      fetch(`http://localhost:5000/api/news/${id}`)
+      fetch(`https://senireligiuns-api.vercel.app/api/news/${id}`)
         .then((response) => response.json())
         .then((data) => {
           setBeritaDetail(data);
@@ -34,7 +34,7 @@ const BeritaDetail = () => {
   useEffect(() => {
     const fetchOtherNews = () => {
       setIsOtherNewsLoading(true); // Set loading to true before fetching
-      fetch("http://localhost:5000/api/news")
+      fetch("https://senireligiuns-api.vercel.app/api/news")
         .then((response) => response.json())
         .then((data) => {
           setOtherNews(data);

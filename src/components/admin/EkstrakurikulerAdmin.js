@@ -37,7 +37,7 @@ const EkstrakurikulerAdmin = () => {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("http://localhost:5000/api/visi-misi")
+      .get("https://senireligiuns-api.vercel.app/api/visi-misi")
       .then((response) => {
         const { visi, misi, id } = response.data || {};
         setFormData({ visi: visi || "", misi: misi || [""], id: id || null });
@@ -51,7 +51,7 @@ const EkstrakurikulerAdmin = () => {
   // Fetch extracurriculars from backend
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:5000/api/extracurriculars")
+    fetch("https://senireligiuns-api.vercel.app/api/extracurriculars")
       .then((response) => response.json())
       .then((data) => setExtracurriculars(data))
       .finally(() => setIsLoading(false));
@@ -86,7 +86,7 @@ const EkstrakurikulerAdmin = () => {
     setIsLoading(true);
     try {
       await axios.put(
-        `http://localhost:5000/api/visi-misi/${formData.id}`,
+        `https://senireligiuns-api.vercel.app/api/visi-misi/${formData.id}`,
         formData,
         {
           headers: { "Content-Type": "application/json" },
@@ -113,7 +113,7 @@ const EkstrakurikulerAdmin = () => {
     formData.append("description", newRole);
     if (newImage) formData.append("image", newImage);
 
-    fetch("http://localhost:5000/api/extracurriculars", {
+    fetch("https://senireligiuns-api.vercel.app/api/extracurriculars", {
       method: "POST",
       body: formData,
     })
@@ -147,7 +147,7 @@ const EkstrakurikulerAdmin = () => {
       formData.append("image", selectedExtracurricular.newImage);
 
     fetch(
-      `http://localhost:5000/api/extracurriculars/${selectedExtracurricular.id}`,
+      `https://senireligiuns-api.vercel.app/api/extracurriculars/${selectedExtracurricular.id}`,
       {
         method: "PUT",
         body: formData,
@@ -171,7 +171,7 @@ const EkstrakurikulerAdmin = () => {
   const handleDelete = (id) => {
     if (window.confirm("Apakah Anda yakin ingin menghapus pengurus ini?")) {
       setIsDeleting(true);
-      fetch(`http://localhost:5000/api/extracurriculars/${id}`, {
+      fetch(`https://senireligiuns-api.vercel.app/api/extracurriculars/${id}`, {
         method: "DELETE",
       })
         .then(() => {

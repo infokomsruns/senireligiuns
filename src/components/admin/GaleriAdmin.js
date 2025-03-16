@@ -17,7 +17,7 @@ const GaleriAdmin = () => {
   // Fetch gallery items from backend
   useEffect(() => {
     setIsLoading(true); // Mulai loading
-    fetch("http://localhost:5000/api/galeri")
+    fetch("https://senireligiuns-api.vercel.app/api/galeri")
       .then((response) => response.json())
       .then((data) => setGaleri(data))
       .finally(() => setIsLoading(false));
@@ -30,7 +30,7 @@ const GaleriAdmin = () => {
     formData.append("title", newTitle);
     if (newImage) formData.append("image", newImage);
 
-    fetch("http://localhost:5000/api/galeri", {
+    fetch("https://senireligiuns-api.vercel.app/api/galeri", {
       method: "POST",
       body: formData,
     })
@@ -51,7 +51,7 @@ const GaleriAdmin = () => {
     if (selectedGaleri.image) formData.append("image", selectedGaleri.image);
 
     fetch(
-      `http://localhost:5000/api/galeri/${selectedGaleri.id}`,
+      `https://senireligiuns-api.vercel.app/api/galeri/${selectedGaleri.id}`,
       {
         method: "PUT",
         body: formData,
@@ -68,7 +68,7 @@ const GaleriAdmin = () => {
   // Handle delete gallery
   const handleDelete = (id) => {
     setIsDeleting(true); // Mulai menghapus galeri
-    fetch(`http://localhost:5000/api/galeri/${id}`, {
+    fetch(`https://senireligiuns-api.vercel.app/api/galeri/${id}`, {
       method: "DELETE",
     })
       .then(() => {

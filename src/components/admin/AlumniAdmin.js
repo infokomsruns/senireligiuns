@@ -16,7 +16,7 @@ const AlumniAdmin = () => {
   // Fetch alumni from backend
   useEffect(() => {
     setIsLoading(true); 
-    fetch("http://localhost:5000/api/alumni")
+    fetch("https://senireligiuns-api.vercel.app/api/alumni")
       .then((response) => response.json())
       .then((data) => setAlumni(data))
       .finally(() => setIsLoading(false)); 
@@ -30,7 +30,7 @@ const AlumniAdmin = () => {
     if (selectedAlumni.image) formData.append("image", selectedAlumni.image);
 
     setIsUpdating(true); // Start the loading spinner for update
-    fetch(`http://localhost:5000/api/alumni/${selectedAlumni.id}`, {
+    fetch(`https://senireligiuns-api.vercel.app/api/alumni/${selectedAlumni.id}`, {
       method: "PUT",
       body: formData,
     })
@@ -52,7 +52,7 @@ const AlumniAdmin = () => {
 
   const handleDelete = (id) => {
     setIsDeleting(true); // Start the loading spinner for delete
-    fetch(`http://localhost:5000/api/alumni/${id}`, {
+    fetch(`https://senireligiuns-api.vercel.app/api/alumni/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -81,7 +81,7 @@ const AlumniAdmin = () => {
     if (newImage) formData.append("image", newImage);
 
     setIsCreating(true); // Start the loading spinner for create
-    fetch("http://localhost:5000/api/alumni", {
+    fetch("https://senireligiuns-api.vercel.app/api/alumni", {
       method: "POST",
       body: formData,
     })

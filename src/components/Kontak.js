@@ -45,7 +45,7 @@ const Contact = () => {
     ) {
       setIsLoading(true); 
       try {
-        await axios.post("http://localhost:5000/api/contacts", formData);
+        await axios.post("https://senireligiuns-api.vercel.app/api/contacts", formData);
         setIsSubmitted(true);
         setFormData({ name: "", email: "", phone: "", message: "" });
       } catch (error) {

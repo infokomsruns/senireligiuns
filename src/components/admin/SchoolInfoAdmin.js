@@ -24,7 +24,7 @@ const SchoolInfoAdmin = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:5000/api/schoolinfo")
+    fetch("https://senireligiuns-api.vercel.app/api/schoolinfo")
       .then((response) => response.json())
       .then((data) => {
         setSchoolInfo(data);
@@ -72,7 +72,7 @@ const SchoolInfoAdmin = () => {
     };
 
     fetch(
-      `http://localhost:5000/api/schoolinfo/${schoolInfo.id}`,
+      `https://senireligiuns-api.vercel.app/api/schoolinfo/${schoolInfo.id}`,
       {
         method: "PUT",
         headers: {

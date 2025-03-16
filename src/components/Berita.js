@@ -20,8 +20,8 @@ const Berita = () => {
     }
 
     Promise.all([
-      fetch("http://localhost:5000/api/news").then((res) => res.json()),
-      fetch("http://localhost:5000/api/galeri").then((res) => res.json()),
+      fetch("https://senireligiuns-api.vercel.app/api/news").then((res) => res.json()),
+      fetch("https://senireligiuns-api.vercel.app/api/galeri").then((res) => res.json()),
     ])
       .then(([newsData, galeriData]) => {
         setNews(newsData);

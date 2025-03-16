@@ -25,9 +25,9 @@ const Home = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch("http://localhost:5000/api/hero").then((res) => res.json()),
-      fetch("http://localhost:5000/api/news").then((res) => res.json()),
-      fetch("http://localhost:5000/api/alumni").then((res) => res.json()),
+      fetch("https://senireligiuns-api.vercel.app/api/hero").then((res) => res.json()),
+      fetch("https://senireligiuns-api.vercel.app/api/news").then((res) => res.json()),
+      fetch("https://senireligiuns-api.vercel.app/api/alumni").then((res) => res.json()),
     ])
       .then(([heroData, newsData, alumniData]) => {
         setHero(heroData);

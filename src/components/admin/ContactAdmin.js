@@ -14,7 +14,7 @@ const ContactAdmin = () => {
   const fetchMessages = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get("http://localhost:5000/api/contacts");
+      const response = await axios.get("https://senireligiuns-api.vercel.app/api/contacts");
       setMessages(response.data);
     } catch (error) {
       console.error("Kesalahan mengambil data pesan:", error);
@@ -26,7 +26,7 @@ const ContactAdmin = () => {
   const handleDelete = async (id) => {
     setIsDeleting(true); 
     try {
-      await axios.delete(`http://localhost:5000/api/contacts/${id}`);
+      await axios.delete(`https://senireligiuns-api.vercel.app/api/contacts/${id}`);
       fetchMessages(); 
     } catch (error) {
       console.error("Kesalahan menghapus data pesan:", error);

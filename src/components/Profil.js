@@ -42,10 +42,10 @@ const Profile = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch("http://localhost:5000/api/headmaster-message").then((res) =>
+      fetch("https://senireligiuns-api.vercel.app/api/headmaster-message").then((res) =>
         res.json()
       ),
-      fetch("http://localhost:5000/api/sejarah").then((res) => res.json()),
+      fetch("https://senireligiuns-api.vercel.app/api/sejarah").then((res) => res.json()),
     ])
       .then(([headmasterData, sejarahData]) => {
         setHeadmasterMessage(headmasterData);

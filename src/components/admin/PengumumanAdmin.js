@@ -17,7 +17,7 @@ const PengumumanAdmin = () => {
   // Fetch pengumuman dari backend
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:5000/api/announcements")
+    fetch("https://senireligiuns-api.vercel.app/api/announcements")
       .then((response) => response.json())
       .then((data) => setAnnouncements(data))
       .finally(() => setIsLoading(false));
@@ -33,7 +33,7 @@ const PengumumanAdmin = () => {
     };
 
     fetch(
-      `http://localhost:5000/api/announcements/${selectedAnnouncement.id}`,
+      `https://senireligiuns-api.vercel.app/api/announcements/${selectedAnnouncement.id}`,
       {
         method: "PUT",
         headers: {
@@ -58,7 +58,7 @@ const PengumumanAdmin = () => {
   // Handle delete pengumuman
   const handleDelete = (id) => {
     setIsDeleting(true);
-    fetch(`http://localhost:5000/api/announcements/${id}`, {
+    fetch(`https://senireligiuns-api.vercel.app/api/announcements/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -83,7 +83,7 @@ const PengumumanAdmin = () => {
   // Handle create pengumuman
   const handleCreatePengumuman = () => {
     setIsCreating(true);
-    fetch("http://localhost:5000/api/announcements", {
+    fetch("https://senireligiuns-api.vercel.app/api/announcements", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -15,7 +15,7 @@ const SambutanAdmin = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:5000/api/headmaster-message")
+    fetch("https://senireligiuns-api.vercel.app/api/headmaster-message")
       .then((response) => response.json())
       .then((data) => {
         setHeadmasterMessage(data);
@@ -37,7 +37,7 @@ const SambutanAdmin = () => {
       if (newImage) formData.append("image", newImage);
 
       fetch(
-        `http://localhost:5000/api/headmaster-message/${headmasterMessage.id}`,
+        `https://senireligiuns-api.vercel.app/api/headmaster-message/${headmasterMessage.id}`,
         {
           method: "PUT",
           body: formData,

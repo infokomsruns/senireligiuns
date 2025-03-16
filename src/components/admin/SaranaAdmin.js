@@ -38,7 +38,7 @@ const SaranaAdmin = () => {
   // Fetch sarana from backend
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:5000/api/sarana")
+    fetch("https://senireligiuns-api.vercel.app/api/sarana")
       .then((response) => response.json())
       .then((data) => setSarana(data))
       .finally(() => setIsLoading(false));
@@ -52,7 +52,7 @@ const SaranaAdmin = () => {
     formData.append("description", newDescription);
     if (newImage) formData.append("image", newImage);
 
-    fetch("http://localhost:5000/api/sarana", {
+    fetch("https://senireligiuns-api.vercel.app/api/sarana", {
       method: "POST",
       body: formData,
     })
@@ -83,7 +83,7 @@ const SaranaAdmin = () => {
       formData.append("image", newImage);
     }
 
-    fetch(`http://localhost:5000/api/sarana/${selectedSarana.id}`, {
+    fetch(`https://senireligiuns-api.vercel.app/api/sarana/${selectedSarana.id}`, {
       method: "PUT",
       body: formData,
     })
@@ -98,7 +98,7 @@ const SaranaAdmin = () => {
   // Handle delete sarana
   const handleDelete = (id) => {
     setIsDeleting(true); // Mulai menghapus sarana
-    fetch(`http://localhost:5000/api/sarana/${id}`, {
+    fetch(`https://senireligiuns-api.vercel.app/api/sarana/${id}`, {
       method: "DELETE",
     })
       .then(() => {

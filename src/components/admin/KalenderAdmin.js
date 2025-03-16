@@ -10,7 +10,7 @@ const KalenderAdmin = () => {
 
   useEffect(() => {
     setIsLoading(true); // Mulai loading saat pengambilan data
-    fetch("http://localhost:5000/api/kalender")
+    fetch("https://senireligiuns-api.vercel.app/api/kalender")
       .then((response) => response.json())
       .then((data) => {
         setKalender(data[0]);
@@ -26,7 +26,7 @@ const KalenderAdmin = () => {
 
     setIsUpdating(true); // Mulai loading saat mengupdate
 
-    fetch(`http://localhost:5000/api/kalender/${kalender.id}`, {
+    fetch(`https://senireligiuns-api.vercel.app/api/kalender/${kalender.id}`, {
       method: "PUT",
       body: formData,
     })

@@ -15,7 +15,7 @@ const SejarahAdmin = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:5000/api/sejarah")
+    fetch("https://senireligiuns-api.vercel.app/api/sejarah")
       .then((response) => response.json())
       .then((data) => {
         // Asumsikan data adalah array slide sejarah
@@ -32,7 +32,7 @@ const SejarahAdmin = () => {
     if (newImage) {
       formData.append("image", newImage);
     }
-    fetch(`http://localhost:5000/api/sejarah/${editingSlide.id}`, {
+    fetch(`https://senireligiuns-api.vercel.app/api/sejarah/${editingSlide.id}`, {
       method: "PUT",
       body: formData,
     })
@@ -54,7 +54,7 @@ const SejarahAdmin = () => {
     if (newImage) {
       formData.append("image", newImage);
     }
-    fetch(`http://localhost:5000/api/sejarah`, {
+    fetch(`https://senireligiuns-api.vercel.app/api/sejarah`, {
       method: "POST",
       body: formData,
     })
@@ -70,7 +70,7 @@ const SejarahAdmin = () => {
 
   const handleDeleteSlide = (id) => {
     setIsUpdating(true);
-    fetch(`http://localhost:5000/api/sejarah/${id}`, {
+    fetch(`https://senireligiuns-api.vercel.app/api/sejarah/${id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())

@@ -60,12 +60,12 @@ const Layanan = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch("http://localhost:5000/api/extracurriculars").then((res) =>
+      fetch("https://senireligiuns-api.vercel.app/api/extracurriculars").then((res) =>
         res.json()
       ),
-      fetch("http://localhost:5000/api/sarana").then((res) => res.json()),
-      fetch("http://localhost:5000/api/kalender").then((res) => res.json()),
-      fetch("http://localhost:5000/api/visi-misi").then((res) => res.json()),
+      fetch("https://senireligiuns-api.vercel.app/api/sarana").then((res) => res.json()),
+      fetch("https://senireligiuns-api.vercel.app/api/kalender").then((res) => res.json()),
+      fetch("https://senireligiuns-api.vercel.app/api/visi-misi").then((res) => res.json()),
     ])
       .then(([ekskulData, saranaData, kalenderData, visiMisiData]) => {
         setExtracurriculars(ekskulData);

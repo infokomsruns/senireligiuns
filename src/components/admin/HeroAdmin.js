@@ -11,7 +11,7 @@ const HeroAdmin = () => {
 
   useEffect(() => {
     setIsLoading(true); // Mulai loading
-    fetch("http://localhost:5000/api/hero")
+    fetch("https://senireligiuns-api.vercel.app/api/hero")
       .then((response) => response.json())
       .then((data) => {
         setHero(data);
@@ -29,7 +29,7 @@ const HeroAdmin = () => {
 
     setIsUpdating(true);
 
-    fetch(`http://localhost:5000/api/hero/${hero.id}`, {
+    fetch(`https://senireligiuns-api.vercel.app/api/hero/${hero.id}`, {
       method: "PUT",
       body: formData,
     })
