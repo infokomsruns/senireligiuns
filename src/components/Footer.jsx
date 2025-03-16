@@ -1,5 +1,13 @@
 import React from "react";
-import { FaYoutube, FaMapMarkerAlt, FaEnvelope, FaInstagram, FaFacebook, FaTiktok } from "react-icons/fa";
+import {
+  FaYoutube,
+  FaMapMarkerAlt,
+  FaEnvelope,
+  FaInstagram,
+  FaFacebook,
+  FaTiktok,
+  FaPhone,
+} from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 
 const Footer = () => {
@@ -8,12 +16,11 @@ const Footer = () => {
   // Check if the current page is the admin page
   const isAdminPage = location.pathname.startsWith("/admin");
   const isLoginPage = location.pathname === "/login";
-  
+
   if (isAdminPage || isLoginPage) return null;
-  
+
   return (
     <footer className="bg-gradient-to-r from-blue-950 via-blue-900 to-blue-800 text-white">
-      
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Logo and Address Section */}
@@ -25,31 +32,78 @@ const Footer = () => {
                 className="h-16 w-auto mr-4"
               />
               <div>
-                <p className="text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">SENI RELIGI</p>
+                <p className="text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+                  SENI RELIGI
+                </p>
                 <p className="text-blue-200 text-sm">UNS Surakarta</p>
               </div>
             </div>
-            
+
             <div className="bg-blue-900/50 rounded-lg p-4 shadow-inner hover:bg-blue-800/50 transition duration-300">
-              <p className="flex items-start mb-3">
-                <FaMapMarkerAlt className="mr-3 mt-1 text-blue-300 flex-shrink-0" />
-                <span className="text-sm">
-                  Universitas Negeri Sebelas Maret<br/>
-                  Jl. Ir. Sutami No.36, Jebres, Kec. Jebres,<br/>
-                  Kota Surakarta, Jawa Tengah 57126
-                </span>
-              </p>
-              <p className="flex items-center">
+              {/* Address Section */}
+              <div className="flex items-start mb-3">
+                <FaMapMarkerAlt
+                  className="mr-3 mt-1 text-blue-300 flex-shrink-0"
+                  size={24}
+                />
+                <div className="text-sm">
+                  <p>Universitas Negeri Sebelas Maret</p>
+                  <p>Jl. Ir. Sutami No.36, Jebres, Kec. Jebres,</p>
+                  <p>Kota Surakarta, Jawa Tengah 57126</p>
+                </div>
+              </div>
+
+              {/* Email Section */}
+              <div className="flex items-center mb-3">
                 <FaEnvelope className="mr-3 text-blue-300 flex-shrink-0" />
                 <span className="text-sm">senireligi@mail.uns.ac.id</span>
-              </p>
+              </div>
+
+              {/* Contact Person Section */}
+              <div className="flex items-center">
+                <FaPhone className="mr-3 text-blue-300 flex-shrink-0" />
+                <div className="text-sm flex flex-col space-y-1">
+                  <div className="flex">
+                    <span className="w-14">Afwa</span>
+                    <a
+                      href="https://wa.me/6289681212395"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      : 089681212395
+                    </a>
+                  </div>
+                  <div className="flex">
+                    <span className="w-14">Naura</span>
+                    <a
+                      href="https://wa.me/6282141387733"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      : 082141387733
+                    </a>
+                  </div>
+                  <div className="flex">
+                    <span className="w-14">Bayu</span>
+                    <a
+                      href="https://wa.me/6285770641230"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      : 085770641230
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Quick Links Section */}
           <div className="md:mx-auto">
             <h3 className="text-xl font-semibold mb-6 relative pb-2">
-              <span className="bg-gradient-to-r from-blue-300 to-white bg-clip-text text-transparent">Tautan Cepat</span>
+              <span className="bg-gradient-to-r from-blue-300 to-white bg-clip-text text-transparent">
+                Tautan Cepat
+              </span>
               <span className="absolute bottom-0 left-0 w-12 h-1 bg-blue-400 rounded"></span>
             </h3>
             <ul className="space-y-3">
@@ -58,7 +112,7 @@ const Footer = () => {
                 { text: "Profil", href: "/profil" },
                 { text: "Kepengurusan", href: "/layanan" },
                 { text: "Lainnya", href: "/berita" },
-                { text: "Kontak", href: "/kontak" }
+                { text: "Kontak", href: "/kontak" },
               ].map((link, index) => (
                 <li key={index}>
                   <a
@@ -66,7 +120,9 @@ const Footer = () => {
                     className="group flex items-center transition duration-300"
                   >
                     <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
-                    <span className="hover:text-blue-200 hover:translate-x-1 transition-all duration-300">{link.text}</span>
+                    <span className="hover:text-blue-200 hover:translate-x-1 transition-all duration-300">
+                      {link.text}
+                    </span>
                   </a>
                 </li>
               ))}
@@ -76,7 +132,9 @@ const Footer = () => {
           {/* Social Media Section */}
           <div>
             <h3 className="text-xl font-semibold mb-6 relative pb-2">
-              <span className="bg-gradient-to-r from-blue-300 to-white bg-clip-text text-transparent">Ikuti Kami</span>
+              <span className="bg-gradient-to-r from-blue-300 to-white bg-clip-text text-transparent">
+                Ikuti Kami
+              </span>
               <span className="absolute bottom-0 left-0 w-12 h-1 bg-blue-400 rounded"></span>
             </h3>
             <div className="grid grid-cols-2 gap-4">
@@ -117,7 +175,6 @@ const Footer = () => {
                 <span className="text-sm">Tiktok</span>
               </a>
             </div>
-            
           </div>
         </div>
       </div>
@@ -127,7 +184,8 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex md:justify-center items-center">
             <p className="text-center text-sm text-blue-200">
-              &copy; {new Date().getFullYear()} Seni Religi Universitas Sebelas Maret. All rights reserved.
+              &copy; {new Date().getFullYear()} Seni Religi Universitas Sebelas
+              Maret. All rights reserved.
             </p>
           </div>
         </div>
