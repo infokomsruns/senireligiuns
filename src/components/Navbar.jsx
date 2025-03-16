@@ -286,7 +286,7 @@ const Navbar = () => {
           {/* Beranda */}
           <button
             onClick={() => handleNavigation("/", "#home")}
-            className="flex items-center text-lg font-medium mb-4 hover:bg-blue-800 hover:text-white p-3 rounded-lg w-full transition duration-300"
+            className="flex items-center text-lg font-medium hover:bg-blue-800 hover:text-white p-3 rounded-lg w-full transition duration-300"
           >
             <FaHome className="mr-3" /> Beranda
           </button>
