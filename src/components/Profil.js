@@ -13,28 +13,28 @@ const Profile = () => {
     {
       id: "circle",
       label: "Lingkaran",
-      image: "/assets/image/lingkaran.png",
+      image: "/assets/image/lingkaran.svg",
       description:
         "Lingkaran menyerupai bentuk rebana yang mempunyai makna Organisasi Kemahasiswaan Kerohanian Islam (OKI) Seni Religi (SR) bergerak dalam bidang kesenian. <br/>Warna hijau pada lingkaran melambangkan kedamaian dan ketenteraman.",
     },
     {
       id: "letter",
       label: "Huruf",
-      image: "/assets/image/huruf.png",
+      image: "/assets/image/huruf.svg",
       description:
         'Huruf "R" menunjukkan bahwa organisasi ini bergerak pada bidang religi. <br/>Warna biru pada huruf "R" melambangkan kedalaman ilmu agama yang dimiliki oleh anggotanya.',
     },
     {
       id: "star",
       label: "Bintang",
-      image: "/assets/image/bintang.png",
+      image: "/assets/image/bintang.svg",
       description:
         "Bintang berjumlah lima merupakan representasi dari Pancasila. <br/>Warna kuning pada bintang melambangkan keceriaan dan semangat yang selalu dimiliki anggotanya.",
     },
     {
       id: "flag",
       label: "Bendera",
-      image: "/assets/image/bendera.png",
+      image: "/assets/image/bendera.svg",
       description:
         "Warna merah putih melambangkan darah dan tulang yang menunjukkan rasa cinta anggota terhadap NKRI seperti menyatunya darah dan tulang dalam tubuh.",
     },
