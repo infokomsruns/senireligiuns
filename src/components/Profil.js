@@ -151,7 +151,7 @@ const Profile = () => {
                 <div className="relative group z-10">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-100 opacity-50 rounded-lg transform rotate-3 scale-105 transition-transform duration-300 group-hover:rotate-0"></div>
                   <img
-                    src={`http://localhost:5000${headmasterMessage.image}`}
+                    src={headmasterMessage.image}
                     alt="Seni Religi"
                     className="relative z-10 w-full h-auto object-cover rounded-lg shadow-xl transform transition-transform duration-300 group-hover:scale-105"
                   />
@@ -228,7 +228,7 @@ const Profile = () => {
                   <div className="relative">
                     <div className="absolute inset-0 bg-indigo-500 transform rotate-3 rounded-lg"></div>
                     <img
-                      src={`http://localhost:5000${currentSejarah.image}`}
+                      src={currentSejarah.image}
                       alt={`Sejarah ${currentSejarah.period}`}
                       className="relative w-full h-auto object-cover rounded-lg shadow-xl z-10"
                     />

@@ -99,7 +99,7 @@ const Home = () => {
                 duration: 4,
                 ease: "easeInOut",
               }}
-              src={`http://localhost:5000${hero.image}`}
+              src={hero.image}
               alt="Seni Religi UNS"
               className="rounded-2xl shadow-2xl w-4/5 md:w-4/5 object-cover border-4 border-white"
             />
@@ -141,7 +141,7 @@ const Home = () => {
                       {item.image && (
                         <>
                           <img
-                            src={`http://localhost:5000${item.image}`}
+                            src={item.image}
                             alt={item.title}
                             className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                           />
@@ -240,7 +240,7 @@ const Home = () => {
               >
                 <div className="relative overflow-hidden">
                   <img
-                    src={`http://localhost:5000${item.image}`}
+                    src={item.image}
                     alt={item.title}
                     className="w-full h-64 object-cover transition duration-700 group-hover:scale-110"
                   />

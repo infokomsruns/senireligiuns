@@ -195,7 +195,7 @@ const Berita = () => {
                       {item.image && (
                         <>
                           <img
-                            src={`http://localhost:5000${item.image}`}
+                            src={item.image}
                             alt={item.title}
                             className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                           />
@@ -428,7 +428,7 @@ const Berita = () => {
                   >
                     <div className="relative overflow-hidden">
                       <img
-                        src={`http://localhost:5000${item.image}`}
+                        src={item.image}
                         alt={item.title}
                         className="w-full h-64 object-cover transition duration-700 group-hover:scale-110"
                       />

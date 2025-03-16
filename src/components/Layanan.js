@@ -181,7 +181,7 @@ const Layanan = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-100 opacity-50 rounded-lg transform rotate-1 scale-105 transition-transform duration-300 group-hover:rotate-0"></div>
               {kalender.file && (
                 <img
-                  src={`http://localhost:5000${kalender.file}`}
+                  src={kalender.file}
                   alt={kalender.title}
                   className="relative z-10 object-cover w-full h-full rounded-lg transform transition-transform duration-300 group-hover:scale-105"
                 />
@@ -219,7 +219,7 @@ const Layanan = () => {
                   <div className="md:w-1/3">
                     <div className="relative w-48 h-48 mx-auto mb-6 md:mb-0 overflow-hidden rounded-full border-4 border-white shadow-lg">
                       <img
-                        src={`http://localhost:5000${ekstra.image}`}
+                        src={ekstra.image}
                         alt={ekstra.name}
                         className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                       />
@@ -307,7 +307,7 @@ const Layanan = () => {
                 <div className="relative w-full h-56 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <img
-                    src={`http://localhost:5000${ekstra.image}`}
+                    src={ekstra.image}
                     alt={ekstra.name}
                     className="object-cover w-full h-full transform transition-transform duration-500 hover:scale-110"
                   />
@@ -416,7 +416,7 @@ const Layanan = () => {
               >
                 <div className="relative w-full h-56 overflow-hidden">
                   <img
-                    src={`http://localhost:5000${item.image}`}
+                    src={item.image}
                     alt={item.name}
                     className="object-cover w-full h-full transform transition-transform duration-500 hover:scale-110"
                   />
