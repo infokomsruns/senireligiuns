@@ -37,7 +37,7 @@ const Contact = () => {
   };
   
   const validateName = (name) => {
-    const nameRegex = /^[a-zA-Z\s'.]{2,40}$/;
+    const nameRegex = /^[\p{L}\p{M}\s'.-]{2,40}$/u;
     const isFormatValid = nameRegex.test(name);
     const hasProhibitedWord = prohibitedWords.some(word =>
       name.toLowerCase().includes(word.toLowerCase())
