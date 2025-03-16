@@ -6,7 +6,6 @@ const AlumniAdmin = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAlumni, setSelectedAlumni] = useState(null);
   const [newTitle, setNewTitle] = useState("");
-  const [newDescription, setNewDescription] = useState("");
   const [newImage, setNewImage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -26,7 +25,6 @@ const AlumniAdmin = () => {
   const handleUpdateAlumni = () => {
     const formData = new FormData();
     formData.append("title", selectedAlumni.title);
-    formData.append("description", selectedAlumni.description);
     if (selectedAlumni.image) formData.append("image", selectedAlumni.image);
 
     setIsUpdating(true); // Start the loading spinner for update
@@ -40,10 +38,6 @@ const AlumniAdmin = () => {
         closeModal();
       })
       .finally(() => setIsUpdating(false)); // Stop the loading spinner for update
-  };
-
-  const handleDescriptionChange = (e) => {
-    setNewDescription(e.target.value);
   };
 
   const handleFileChange = (e) => {
@@ -77,7 +71,6 @@ const AlumniAdmin = () => {
   const handleCreateAlumni = () => {
     const formData = new FormData();
     formData.append("title", newTitle);
-    formData.append("description", newDescription);
     if (newImage) formData.append("image", newImage);
 
     setIsCreating(true); // Start the loading spinner for create
@@ -89,7 +82,6 @@ const AlumniAdmin = () => {
       .then((data) => {
         setAlumni([...alumni, data]);
         setNewTitle("");
-        setNewDescription("");
         setNewImage(null);
       })
       .finally(() => setIsCreating(false)); // Stop the loading spinner for create
@@ -131,14 +123,6 @@ const AlumniAdmin = () => {
               className="w-full p-3 border border-gray-300 rounded-md"
               required
             />
-            <label className="block text-gray-600">Deskripsi Agenda</label>
-            <textarea
-              placeholder="Deskripsi Agenda"
-              value={newDescription}
-              onChange={handleDescriptionChange}
-              className="w-full p-3 border border-gray-300 rounded-md"
-              rows="4"
-            />
             <label className="block text-gray-600">Gambar Agenda</label>
             <input
               type="file"
@@ -172,7 +156,6 @@ const AlumniAdmin = () => {
               {alumni.map((item) => (
                 <tr key={item.id} className="border-t">
                   <td className="px-4 py-2">{item.title}</td>
-                  <td className="px-4 py-2">{item.description}</td>
                   <td className="px-4 py-2">
                     {item.image && (
                       <img
@@ -225,18 +208,6 @@ const AlumniAdmin = () => {
                     })
                   }
                   className="w-full p-3 border border-gray-300 rounded-md"
-                />
-                <label className="block text-gray-600">Deskripsi Agenda</label>
-                <textarea
-                  value={selectedAlumni.description}
-                  onChange={(e) =>
-                    setSelectedAlumni({
-                      ...selectedAlumni,
-                      description: e.target.value,
-                    })
-                  }
-                  className="w-full p-3 border border-gray-300 rounded-md"
-                  rows="4"
                 />
                 <label className="block text-gray-600">Gambar Agenda</label>
                 <input
