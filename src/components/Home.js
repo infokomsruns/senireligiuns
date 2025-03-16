@@ -97,13 +97,15 @@ const Home = () => {
             className="md:w-1/2 flex justify-center relative z-10"
           >
             <motion.img
-              animate={{
-                y: [0, -15, 0],
-              }}
+              loading="eager"
+              width={600}
+              height={400}
+              animate={{ y: [0, -15, 0] }}
               transition={{
                 repeat: Infinity,
                 duration: 4,
                 ease: "easeInOut",
+                delay: 1,
               }}
               src={hero.image}
               alt="Seni Religi UNS"
