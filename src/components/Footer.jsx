@@ -21,7 +21,7 @@ const Footer = () => {
             <div className="flex items-center bg-blue-900/50 rounded-lg p-4 shadow-inner hover:bg-blue-800/50 transition duration-300">
               <img
                 src="/assets/image/LOGO SR FIX.png"
-                alt="SMP NEGERI 1 TAMANSARI"
+                alt="SENI RELIGI UNS"
                 className="h-16 w-auto mr-4"
               />
               <div>
