@@ -117,10 +117,10 @@ const Footer = () => {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="group flex items-center transition duration-300"
+                    className="group flex items-center transition-colors duration-300"
                   >
-                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
-                    <span className="hover:text-blue-200 hover:translate-x-1 transition-all duration-300">
+                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    <span className="group-hover:text-blue-200 transition-colors duration-300">
                       {link.text}
                     </span>
                   </a>

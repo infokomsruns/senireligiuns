@@ -78,7 +78,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="font-sans">
+    <div>
       {/* Hero Banner */}
       <div className="relative h-64 md:h-80 bg-gradient-to-r from-blue-600 to-indigo-700 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
