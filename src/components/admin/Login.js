@@ -28,14 +28,14 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen relative bg-gradient-to-br from-blue-50 via-blue-50 to-indigo-50">
       <div className="flex flex-col lg:flex-row bg-white rounded-2xl shadow-lg overflow-hidden w-full max-w-4xl">
         {/* Left side: Image with overlay */}
         <div className="hidden lg:flex lg:w-1/2 bg-gray-200 items-center justify-center relative">
           <img
             alt="Background"
             className="object-cover w-full h-full"
-            src="/assets/image/admin.png"
+            src="/assets/image/admin.svg"
           />
         </div>
 
@@ -43,16 +43,16 @@ const Login = () => {
         <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center">
           <form className="space-y-6">
             {/* Logo */}
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center">
               <img
                 alt="Logo"
                 className="w-20 h-20"
-                src="/assets/image/logo.png"
+                src="/assets/image/LOGO SR FIX.svg"
               />
             </div>
 
             {/* Title */}
-            <h2 className="text-3xl font-semibold text-center mb-6">Login Admin</h2>
+            <h2 className="text-3xl font-semibold text-center">Login Admin</h2>
 
             {/* Error message */}
             {error && (

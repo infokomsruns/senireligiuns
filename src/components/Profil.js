@@ -327,7 +327,7 @@ const Profile = () => {
                 }}
               />
               <motion.img
-                src="/assets/image/LOGO SR FIX.png"
+                src="/assets/image/LOGO SR FIX.svg"
                 alt="Logo SR"
                 className="relative h-64 w-auto drop-shadow-2xl"
                 initial={{ opacity: 0, scale: 0.8 }}

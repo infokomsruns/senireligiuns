@@ -27,12 +27,12 @@ const Footer = () => {
           <div className="space-y-6">
             <div className="flex items-center bg-blue-900/50 rounded-lg p-4 shadow-inner hover:bg-blue-800/50 transition duration-300">
               <img
-                src="/assets/image/LOGO SR FIX.png"
+                src="/assets/image/LOGO SR FIX.svg"
                 alt="SENI RELIGI UNS"
-                className="h-16 w-auto mr-4"
+                className="h-10 w-auto mr-4"
               />
               <div>
-                <p className="text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+                <p className="text-xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                   SENI RELIGI
                 </p>
                 <p className="text-blue-200 text-sm">UNS Surakarta</p>

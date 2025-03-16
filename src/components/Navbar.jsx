@@ -76,13 +76,13 @@ const Navbar = () => {
             }`}
           >
             <img
-              src="/assets/image/LOGO SR FIX.png"
+              src="/assets/image/LOGO SR FIX.svg"
               alt="School Logo"
-              className="h-14 w-auto mr-3"
+              className="h-10 w-auto mr-2"
             />
             <div>
               {isAdminPage ? (
-                <div className="text-2xl font-bold text-gray-700 tracking-wide">
+                <div className="text-xl font-bold text-gray-700 tracking-wide">
                   Admin Dashboard
                 </div>
               ) : (
@@ -271,7 +271,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center">
             <img
-              src="/assets/image/LOGO SR FIX.png"
+              src="/assets/image/LOGO SR FIX.svg"
               alt="School Logo"
               className="h-12 w-auto mr-3"
             />
