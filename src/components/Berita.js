@@ -20,8 +20,12 @@ const Berita = () => {
     }
 
     Promise.all([
-      fetch("https://senireligiuns-api.vercel.app/api/news").then((res) => res.json()),
-      fetch("https://senireligiuns-api.vercel.app/api/galeri").then((res) => res.json()),
+      fetch("https://senireligiuns-api.vercel.app/api/news").then((res) =>
+        res.json()
+      ),
+      fetch("https://senireligiuns-api.vercel.app/api/galeri").then((res) =>
+        res.json()
+      ),
     ])
       .then(([newsData, galeriData]) => {
         setNews(newsData);
@@ -82,7 +86,7 @@ const Berita = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen overflow-x-hidden w-full">
       {/* Hero Section */}
       <motion.div
         className="relative bg-gradient-to-r from-blue-600 to-indigo-800 py-36 text-white"
@@ -178,72 +182,76 @@ const Berita = () => {
           {activeTab === "artikel" && (
             <section className="py-12">
               <h2 className="text-3xl font-bold text-gray-800 mb-12 border-b pb-4 relative">
-                <span className="relative z-10">Artikel Terbaru</span>
+                <span className="relative z-10">Artikel Kami</span>
                 <span className="absolute left-0 bottom-0 w-32 h-1 bg-blue-600"></span>
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                {news.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ y: -10 }}
-                    transition={{ duration: 0.3 }}
-                    className="bg-white rounded-xl shadow-xl overflow-hidden group"
-                  >
-                    {/* Image with overlay */}
-                    <div className="w-full h-56 bg-gray-200 relative overflow-hidden">
-                      {item.image && (
-                        <>
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </>
-                      )}
-                    </div>
-
-                    {/* Content with hover effect */}
-                    <div className="p-6 flex flex-col flex-grow border-t border-gray-100">
-                      <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-900 transition-colors duration-300">
-                        {truncateText(item.title, 80)}
-                      </h3>
-                      <p className="text-gray-500 text-sm mb-4">
-                        {new Date(item.publishedAt).toLocaleDateString(
-                          "id-ID",
-                          {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric",
-                          }
-                        )}
-                      </p>
-                      <div className="mt-auto">
-                        <Link
-                          to={`/berita/${item.id}`}
-                          className="inline-flex items-center text-sm font-medium text-blue-800 hover:text-blue-900 transition-colors duration-300"
-                        >
-                          Selengkapnya
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-4 w-4 ml-1"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M9 5l7 7-7 7"
+                {news
+                  .sort(
+                    (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+                  )
+                  .map((item, index) => (
+                    <motion.div
+                      key={index}
+                      whileHover={{ y: -10 }}
+                      transition={{ duration: 0.3 }}
+                      className="bg-white rounded-xl shadow-xl overflow-hidden group"
+                    >
+                      {/* Image with overlay */}
+                      <div className="w-full h-56 bg-gray-200 relative overflow-hidden">
+                        {item.image && (
+                          <>
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                             />
-                          </svg>
-                        </Link>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          </>
+                        )}
                       </div>
-                    </div>
-                  </motion.div>
-                ))}
+
+                      {/* Content with hover effect */}
+                      <div className="p-6 flex flex-col flex-grow border-t border-gray-100">
+                        <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-900 transition-colors duration-300">
+                          {truncateText(item.title, 80)}
+                        </h3>
+                        <p className="text-gray-500 text-sm mb-4">
+                          {new Date(item.publishedAt).toLocaleDateString(
+                            "id-ID",
+                            {
+                              day: "numeric",
+                              month: "long",
+                              year: "numeric",
+                            }
+                          )}
+                        </p>
+                        <div className="mt-auto">
+                          <Link
+                            to={`/artikel/${item.id}`}
+                            className="inline-flex items-center text-sm font-medium text-blue-800 hover:text-blue-900 transition-colors duration-300"
+                          >
+                            Selengkapnya
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-4 w-4 ml-1"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M9 5l7 7-7 7"
+                              />
+                            </svg>
+                          </Link>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
               </div>
             </section>
           )}
