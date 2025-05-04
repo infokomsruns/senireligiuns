@@ -78,7 +78,7 @@ const Profile = () => {
   }
 
   return (
-    <div>
+    <div className="overflow-x-hidden w-full">
       {/* Hero Banner */}
       <div className="relative h-64 md:h-80 bg-gradient-to-r from-blue-600 to-indigo-700 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -143,7 +143,7 @@ const Profile = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }}
-                className="relative order-2 md:order-1"
+                className="relative order-1"
               >
                 <div className="absolute -left-4 -top-4 w-32 h-32 bg-blue-100 rounded-full opacity-70 z-0"></div>
                 <div className="absolute -right-4 -bottom-4 w-20 h-20 bg-indigo-100 rounded-full opacity-70 z-0"></div>
@@ -170,7 +170,7 @@ const Profile = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
-                className="relative order-1 md:order-2"
+                className="relative order-2"
               >
                 <div className="absolute -right-2 -top-2 text-8xl text-indigo-100 font-serif z-0">
                   "
@@ -372,7 +372,7 @@ const Profile = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-xl shadow-2xl overflow-hidden max-w-4xl w-full transform perspective-1000"
+                className="bg-white rounded-xl shadow-2xl overflow-hidden max-w-4xl w-full transform perspective-1000 mb-16"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <div className="flex flex-col md:flex-row">
