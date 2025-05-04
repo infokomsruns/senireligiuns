@@ -59,7 +59,7 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div className="overflow-x-hidden w-full">
       {/* Hero Section with Gradient Background */}
       <div
         id="home"
@@ -175,7 +175,7 @@ const Home = () => {
                       </p>
                       <div className="mt-auto">
                         <Link
-                          to={`/berita/${item.id}`}
+                          to={`/artikel/${item.id}`}
                           className="inline-flex items-center text-sm font-medium text-blue-800 hover:text-blue-900 transition-colors duration-300"
                         >
                           Selengkapnya
