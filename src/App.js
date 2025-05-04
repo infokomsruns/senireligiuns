@@ -41,11 +41,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profil" element={<Profil />} />
-        <Route path="/layanan" element={<Layanan />} />
-        <Route path="/berita" element={<Berita />} />
+        <Route path="/kepengurusan" element={<Layanan />} />
+        <Route path="/lainnya" element={<Berita />} />
         <Route path="/kontak" element={<Kontak />} />
 
-        <Route path="/berita/:id" element={<BeritaDetail />} />
+        <Route path="/artikel/:id" element={<BeritaDetail />} />
         
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Navigate to="/admin-hero" />} /> 
