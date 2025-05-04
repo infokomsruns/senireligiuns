@@ -110,7 +110,7 @@ const Layanan = () => {
   }
 
   return (
-    <div>
+    <div className="overflow-x-hidden w-full">
       {/* Hero Banner */}
       <div className="relative h-64 md:h-80 bg-gradient-to-r from-blue-600 to-indigo-700 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
@@ -343,17 +343,17 @@ const Layanan = () => {
 
           {/* Menu Filter Divisi Staff */}
           <motion.div
-            className="relative py-6 text-white mb-8"
+            className="relative py-6 text-white mb-8 overflow-x-auto"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
           >
             <div className="max-w-7xl mx-auto px-4">
               <motion.div variants={itemVariants}>
-                <div className="flex space-x-4 justify-center">
+                <div className="flex flex-wrap justify-center gap-4">
                   <button
                     onClick={() => setActiveTab("Rumah Tangga")}
-                    className={`px-6 py-3 rounded-full font-medium transition-all ${
+                    className={`px-6 py-3 rounded-full font-medium transition-all whitespace-nowrap ${
                       activeTab === "Rumah Tangga"
                         ? "bg-white text-blue-800 shadow-lg"
                         : "bg-blue-800 text-white hover:bg-blue-700"
@@ -363,7 +363,7 @@ const Layanan = () => {
                   </button>
                   <button
                     onClick={() => setActiveTab("Dakwah")}
-                    className={`px-6 py-3 rounded-full font-medium transition-all ${
+                    className={`px-6 py-3 rounded-full font-medium transition-all whitespace-nowrap ${
                       activeTab === "Dakwah"
                         ? "bg-white text-blue-800 shadow-lg"
                         : "bg-blue-800 text-white hover:bg-blue-700"
@@ -375,7 +375,7 @@ const Layanan = () => {
                     onClick={() =>
                       setActiveTab("Informasi dan Komunikasi")
                     }
-                    className={`px-6 py-3 rounded-full font-medium transition-all ${
+                    className={`px-6 py-3 rounded-full font-medium transition-all whitespace-nowrap ${
                       activeTab === "Informasi dan Komunikasi"
                         ? "bg-white text-blue-800 shadow-lg"
                         : "bg-blue-800 text-white hover:bg-blue-700"
@@ -387,7 +387,7 @@ const Layanan = () => {
                     onClick={() =>
                       setActiveTab("Pengembangan Sumber Daya Manusia")
                     }
-                    className={`px-6 py-3 rounded-full font-medium transition-all ${
+                    className={`px-6 py-3 rounded-full font-medium transition-all whitespace-nowrap ${
                       activeTab === "Pengembangan Sumber Daya Manusia"
                         ? "bg-white text-blue-800 shadow-lg"
                         : "bg-blue-800 text-white hover:bg-blue-700"
