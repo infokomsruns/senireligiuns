@@ -14,20 +14,20 @@ const BeritaAdmin = () => {
   const quillRef = useRef(null);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isCreating, setIsCreating] = useState(false); 
-  const [isUpdating, setIsUpdating] = useState(false); 
+  const [isCreating, setIsCreating] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
   // Fetch berita from backend
   useEffect(() => {
-    setIsLoading(true); 
+    setIsLoading(true);
     fetch("https://senireligiuns-api.vercel.app/api/news")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         setNews(data);
       })
-      .finally(() => setIsLoading(false)); 
+      .finally(() => setIsLoading(false));
   }, []);
 
   // Handle update berita
@@ -189,7 +189,9 @@ const BeritaAdmin = () => {
                 <th className="px-4 py-2 text-left text-gray-600">Judul</th>
                 <th className="px-4 py-2 text-left text-gray-600">Deskripsi</th>
                 <th className="px-4 py-2 text-left text-gray-600">Gambar</th>
-                <th className="px-4 py-2 text-left text-gray-600">Tanggal Terbit</th>
+                <th className="px-4 py-2 text-left text-gray-600">
+                  Tanggal Terbit
+                </th>
                 <th className="px-4 py-2 text-left text-gray-600">Aksi</th>
               </tr>
             </thead>
@@ -242,9 +244,9 @@ const BeritaAdmin = () => {
 
       {/* Modal Edit */}
       {isModalOpen && selectedNews && (
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-start z-50 overflow-y-auto p-4">
           <div
-            className="bg-white p-8 rounded-lg w-1/2 relative"
+            className="bg-white p-8 rounded-lg w-full max-w-3xl my-8 relative"
             onClick={(e) => {
               if (e.target === e.currentTarget) closeModal();
             }}
@@ -264,6 +266,7 @@ const BeritaAdmin = () => {
                 e.preventDefault();
                 handleUpdateBerita();
               }}
+              className="space-y-4"
             >
               <label className="block text-gray-600">Judul Artikel</label>
               <input
