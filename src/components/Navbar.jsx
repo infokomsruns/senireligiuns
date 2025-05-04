@@ -32,15 +32,15 @@ const Navbar = () => {
     setIsSidebarOpen(false);
 
     // Special handling for Berita page tabs
-    if (path === "/berita") {
+    if (path === "/lainnya") {
       if (section === "#galeri") {
-        navigate("/berita?tab=galeri");
+        navigate("/lainnya?tab=galeri");
         return;
       } else if (section === "#kelas") {
-        navigate("/berita?tab=kelas");
+        navigate("/lainnya?tab=kelas");
         return;
       } else if (section === "#artikel") {
-        navigate("/berita?tab=artikel");
+        navigate("/lainnya?tab=artikel");
         return;
       }
     }
@@ -178,19 +178,19 @@ const Navbar = () => {
                 {isDropdownOpen.layanan && (
                   <div className="absolute left-0 space-y-1 bg-white text-gray-700 w-60 p-4 rounded-lg shadow-xl transition duration-300 border-t-2 border-blue-600">
                     <button
-                      onClick={() => handleNavigation("/layanan", "#struktur")}
+                      onClick={() => handleNavigation("/kepengurusan", "#struktur")}
                       className="block w-full text-left text-lg font-medium hover:text-blue-700 hover:bg-blue-50 p-2 rounded-md transition duration-300"
                     >
                       Struktur Organisasi
                     </button>
                     <button
-                      onClick={() => handleNavigation("/layanan", "#pht")}
+                      onClick={() => handleNavigation("/kepengurusan", "#pht")}
                       className="block w-full text-left text-lg font-medium hover:text-blue-700 hover:bg-blue-50 p-2 rounded-md transition duration-300"
                     >
                       Pengurus Harian
                     </button>
                     <button
-                      onClick={() => handleNavigation("/layanan", "#divisi")}
+                      onClick={() => handleNavigation("/kepengurusan", "#divisi")}
                       className="block w-full text-left text-lg font-medium hover:text-blue-700 hover:bg-blue-50 p-2 rounded-md transition duration-300"
                     >
                       Divisi Staff
@@ -218,19 +218,19 @@ const Navbar = () => {
                 {isDropdownOpen.berita && (
                   <div className="absolute left-0 space-y-1 bg-white text-gray-700 w-60 p-4 rounded-lg shadow-xl transition duration-300 border-t-2 border-blue-600">
                     <button
-                      onClick={() => handleNavigation("/berita", "#artikel")}
+                      onClick={() => handleNavigation("/lainnya", "#artikel")}
                       className="block w-full text-left text-lg font-medium hover:text-blue-700 hover:bg-blue-50 p-2 rounded-md transition duration-300"
                     >
                       Artikel
                     </button>
                     <button
-                      onClick={() => handleNavigation("/berita", "#kelas")}
+                      onClick={() => handleNavigation("/lainnya", "#kelas")}
                       className="block w-full text-left text-lg font-medium hover:text-blue-700 hover:bg-blue-50 p-2 rounded-md transition duration-300"
                     >
                       Kelas SR
                     </button>
                     <button
-                      onClick={() => handleNavigation("/berita", "#galeri")}
+                      onClick={() => handleNavigation("/lainnya", "#galeri")}
                       className="block w-full text-left text-lg font-medium hover:text-blue-700 hover:bg-blue-50 p-2 rounded-md transition duration-300"
                     >
                       Galeri
@@ -338,19 +338,19 @@ const Navbar = () => {
               {isDropdownOpen.layanan && (
                 <div className="ml-6 mt-2">
                   <button
-                    onClick={() => handleNavigation("/layanan", "#struktur")}
+                    onClick={() => handleNavigation("/kepengurusan", "#struktur")}
                     className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
                   >
                     Struktur Organisasi
                   </button>
                   <button
-                    onClick={() => handleNavigation("/layanan", "#pht")}
+                    onClick={() => handleNavigation("/kepengurusan", "#pht")}
                     className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
                   >
                     Pengurus Harian
                   </button>
                   <button
-                    onClick={() => handleNavigation("/layanan", "#divisi")}
+                    onClick={() => handleNavigation("/kepengurusan", "#divisi")}
                     className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
                   >
                     Divisi Staff
@@ -373,19 +373,19 @@ const Navbar = () => {
               {isDropdownOpen.berita && (
                 <div className="ml-6 mt-2">
                   <button
-                    onClick={() => handleNavigation("/berita", "#artikel")}
+                    onClick={() => handleNavigation("/lainnya", "#artikel")}
                     className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
                   >
                     Artikel
                   </button>
                   <button
-                    onClick={() => handleNavigation("/berita", "#kelas")}
+                    onClick={() => handleNavigation("/lainnya", "#kelas")}
                     className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
                   >
                     Kelas SR
                   </button>
                   <button
-                    onClick={() => handleNavigation("/berita", "#galeri")}
+                    onClick={() => handleNavigation("/lainnya", "#galeri")}
                     className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
                   >
                     Galeri
