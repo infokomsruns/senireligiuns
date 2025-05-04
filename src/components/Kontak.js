@@ -116,7 +116,7 @@ const Contact = () => {
   }
 
   return (
-    <div className="relative bg-gradient-to-br from-blue-50 via-blue-50 to-indigo-50 py-12">
+    <div className="relative bg-gradient-to-br from-blue-50 via-blue-50 to-indigo-50 py-12 overflow-x-hidden w-full">
       <div className="max-w-7xl mx-auto p-4">
         <h2 className="text-4xl font-semibold text-center text-gray-800 mb-8">
           Kontak Kami
