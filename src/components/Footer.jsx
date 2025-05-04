@@ -110,8 +110,8 @@ const Footer = () => {
               {[
                 { text: "Beranda", href: "/" },
                 { text: "Profil", href: "/profil" },
-                { text: "Kepengurusan", href: "/layanan" },
-                { text: "Lainnya", href: "/berita" },
+                { text: "Kepengurusan", href: "/kepengurusan" },
+                { text: "Lainnya", href: "/lainnya" },
                 { text: "Kontak", href: "/kontak" },
               ].map((link, index) => (
                 <li key={index}>
