@@ -18,7 +18,7 @@ const BeritaDetail = ({
   const [showShareOptions, setShowShareOptions] = useState(false);
 
   // Jika props tidak diberikan, gunakan nilai default
-  const defaultUrl = `https://senireligiuns.vercel.app/berita/${id}`;
+  const defaultUrl = `https://senireligiuns.vercel.app/artikel/${id}`;
   const shareUrl = propUrl || defaultUrl;
   const shareText =
     propText ||
@@ -254,7 +254,7 @@ const BeritaDetail = ({
                       {/* Konten */}
                       <div className="p-4 flex flex-col flex-grow">
                         <h3 className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors">
-                          <Link to={`/berita/${item.id}`}>
+                          <Link to={`/artikel/${item.id}`}>
                             {truncateText(item.title, 80)}
                           </Link>
                         </h3>
@@ -271,7 +271,7 @@ const BeritaDetail = ({
                         </p>
                         <div className="mt-auto text-right pt-2">
                           <Link
-                            to={`/berita/${item.id}`}
+                            to={`/artikel/${item.id}`}
                             className="inline-flex items-center gap-1 text-sm font-medium text-blue-700 hover:text-blue-900 transition-colors"
                           >
                             Selengkapnya
@@ -297,7 +297,7 @@ const BeritaDetail = ({
               </div>
               <div className="mt-6 text-center">
                 <Link
-                  to="/berita"
+                  to="/lainnya"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   Lihat Semua Berita
