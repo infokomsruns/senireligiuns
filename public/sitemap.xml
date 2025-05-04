@@ -15,7 +15,7 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://smpn1tamansari.vercel.app/berita</loc>
+        <loc>https://smpn1tamansari.vercel.app/artikel</loc>
         <lastmod>2025-01-21T03:34:07+01:00</lastmod>
         <priority>1.0</priority>
     </url>
@@ -25,7 +25,7 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://smpn1tamansari.vercel.app/berita/</loc>
+        <loc>https://smpn1tamansari.vercel.app/artikel/</loc>
         <lastmod>2025-01-21T03:34:07+01:00</lastmod>
         <priority>0.8</priority>
     </url>
