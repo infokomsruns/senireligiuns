@@ -186,7 +186,7 @@ const Berita = () => {
                 <span className="absolute left-0 bottom-0 w-32 h-1 bg-blue-600"></span>
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-10">
                 {news
                   .sort(
                     (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
@@ -215,7 +215,7 @@ const Berita = () => {
                       {/* Content with hover effect */}
                       <div className="p-6 flex flex-col flex-grow border-t border-gray-100">
                         <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-900 transition-colors duration-300">
-                          {truncateText(item.title, 80)}
+                          {truncateText(item.title, 60)}
                         </h3>
                         <p className="text-gray-500 text-sm mb-4">
                           {new Date(item.publishedAt).toLocaleDateString(
@@ -425,7 +425,7 @@ const Berita = () => {
                 <span className="absolute left-0 bottom-0 w-32 h-1 bg-blue-600"></span>
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
                 {galeri.map((item, index) => (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
