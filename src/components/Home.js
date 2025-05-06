@@ -130,7 +130,7 @@ const Home = () => {
             </div>
 
             {/* News Cards with Hover Effects */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
               {news
                 .sort(
                   (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
@@ -161,7 +161,7 @@ const Home = () => {
                     {/* Content with hover effect */}
                     <div className="p-6 flex flex-col flex-grow border-t border-gray-100">
                       <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-900 transition-colors duration-300">
-                        {truncateText(item.title, 80)}
+                        {truncateText(item.title, 60)}
                       </h3>
                       <p className="text-gray-500 text-sm mb-4">
                         {new Date(item.publishedAt).toLocaleDateString(
@@ -203,7 +203,7 @@ const Home = () => {
             {/* View all button */}
             <div className="text-center mt-12">
               <Link
-                to="/berita"
+                to="/lainnya?tab=artikel"
                 className="inline-flex items-center px-6 py-3 border border-blue-300 text-blue-700 bg-blue-50 rounded-full hover:bg-blue-700 hover:text-white transition duration-300"
               >
                 Lihat Semua Artikel
@@ -237,7 +237,7 @@ const Home = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-sky-400 to-indigo-500 mx-auto"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
             {alumni.map((item, index) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
