@@ -264,21 +264,23 @@ const Navbar = () => {
 
       {/* Menu Items untuk layar kecil */}
       <div
-        className={`md:hidden bg-gradient-to-br from-blue-900 to-blue-700 text-white w-[70%] max-w-sm h-screen fixed top-0 left-0 z-40 flex flex-col p-6 shadow-xl overflow-y-auto transition-all duration-300 ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        className={`md:hidden bg-gradient-to-br from-blue-900 to-blue-700 text-white w-[70%] max-w-sm h-screen fixed top-0 right-0 z-40 flex flex-col p-6 shadow-xl overflow-y-auto transition-all duration-300 ${
+          isSidebarOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <img
-              src="/assets/image/LOGO SR FIX.svg"
-              alt="School Logo"
-              className="h-12 w-auto mr-3"
-            />
             <div className="text-left">
-              <div className="text-xl font-bold tracking-wide">Seni Religi</div>
+              <div className="text-xl font-bold tracking-wide">Sidebar Menu</div>
             </div>
           </div>
+          {/* Add close button here */}
+          <button
+            onClick={() => setIsSidebarOpen(false)}
+            className="text-white hover:text-gray-300 text-2xl transition duration-300"
+          >
+            <FaTimes />
+          </button>
         </div>
 
         {/* Menu Items */}
@@ -303,22 +305,22 @@ const Navbar = () => {
               {isDropdownOpen.profil ? <FaCaretUp /> : <FaCaretDown />}
             </button>
             {isDropdownOpen.profil && (
-              <div className="ml-6 mt-2">
+              <div className="pl-9 mt-2 space-y-1">
                 <button
                   onClick={() => handleNavigation("/profil", "#tentang")}
-                  className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
+                  className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300 text-left"
                 >
                   Tentang
                 </button>
                 <button
                   onClick={() => handleNavigation("/profil", "#sejarah")}
-                  className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
+                  className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300 text-left"
                 >
                   Sejarah
                 </button>
                 <button
                   onClick={() => handleNavigation("/profil", "#logo")}
-                  className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
+                  className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300 text-left"
                 >
                   Logo
                 </button>
@@ -336,22 +338,22 @@ const Navbar = () => {
                 {isDropdownOpen.layanan ? <FaCaretUp /> : <FaCaretDown />}
               </button>
               {isDropdownOpen.layanan && (
-                <div className="ml-6 mt-2">
+                <div className="pl-9 mt-2 space-y-1">
                   <button
                     onClick={() => handleNavigation("/kepengurusan", "#struktur")}
-                    className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
+                    className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300 text-left"
                   >
                     Struktur Organisasi
                   </button>
                   <button
                     onClick={() => handleNavigation("/kepengurusan", "#pht")}
-                    className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
+                    className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300 text-left"
                   >
                     Pengurus Harian
                   </button>
                   <button
                     onClick={() => handleNavigation("/kepengurusan", "#divisi")}
-                    className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
+                    className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300 text-left"
                   >
                     Divisi Staff
                   </button>
@@ -371,22 +373,22 @@ const Navbar = () => {
                 {isDropdownOpen.berita ? <FaCaretUp /> : <FaCaretDown />}
               </button>
               {isDropdownOpen.berita && (
-                <div className="ml-6 mt-2">
+                <div className="pl-9 mt-2 space-y-1">
                   <button
                     onClick={() => handleNavigation("/lainnya", "#artikel")}
-                    className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
+                    className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300 text-left"
                   >
                     Artikel
                   </button>
                   <button
                     onClick={() => handleNavigation("/lainnya", "#kelas")}
-                    className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
+                    className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300 text-left"
                   >
                     Kelas SR
                   </button>
                   <button
                     onClick={() => handleNavigation("/lainnya", "#galeri")}
-                    className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300"
+                    className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300 text-left"
                   >
                     Galeri
                   </button>
