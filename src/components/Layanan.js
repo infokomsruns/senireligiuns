@@ -5,10 +5,8 @@ import LoadingSpinner from "./LoadingSpinner";
 const rolesOrder = [
   "Ketua",
   "Wakil Ketua",
-  "Kepala Bidang Sekretaris",
-  "Wakil Bidang Sekretaris",
-  "Kepala Bidang Bendahara",
-  "Wakil Bidang Bendahara",
+  "Kepala Bidang Sekretaris Umum",
+  "Kepala Bidang Bendahara Umum",
   "Kepala Bidang Rumah Tangga",
   "Kepala Bidang Dakwah",
   "Kepala Bidang Informasi dan Komunikasi",
@@ -16,6 +14,8 @@ const rolesOrder = [
 ];
 
 const divisi_staff = [
+  "Wakil Sekretaris Umum",
+  "Wakil Bendahara Umum",
   "Kepala Divisi Keaparatan Rumah Tangga",
   "Staff Divisi Keaparatan Rumah Tangga",
   "Kepala Divisi Kaderisasi Rumah Tangga",
@@ -56,7 +56,7 @@ const Layanan = () => {
     visi: "",
     misi: [],
   });
-  const [activeTab, setActiveTab] = useState("Rumah Tangga");
+  const [activeTab, setActiveTab] = useState("Sekretaris");
 
   useEffect(() => {
     Promise.all([
@@ -287,7 +287,7 @@ const Layanan = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col items-center justify-center mb-16">
             <p className="text-2xl text-gray-600 text-center">
-              Kepala Bidang & Wakil Bidang
+              Kepala Bidang
             </p>
           </div>
 
@@ -327,7 +327,7 @@ const Layanan = () => {
         </div>
       </div>
 
-      {/* Divisi Staff Section */}
+      {/* Staff Bidang Section */}
       <div
         id="divisi"
         className="bg-gradient-to-br from-blue-50 via-blue-50 to-indigo-50 py-20 md:py-32"
@@ -336,12 +336,12 @@ const Layanan = () => {
           {/* Judul */}
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-800 tracking-wider mb-3">
-              Divisi Staff
+              Staff Bidang
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto"></div>
           </div>
 
-          {/* Menu Filter Divisi Staff */}
+          {/* Menu Filter Staff Bidang */}
           <motion.div
             className="relative py-6 text-white mb-8 overflow-x-auto"
             initial="hidden"
@@ -351,6 +351,26 @@ const Layanan = () => {
             <div className="max-w-7xl mx-auto px-4">
               <motion.div variants={itemVariants}>
                 <div className="flex flex-wrap justify-center gap-4">
+                  <button
+                    onClick={() => setActiveTab("Sekretaris")}
+                    className={`px-6 py-3 rounded-full font-medium transition-all whitespace-nowrap ${
+                      activeTab === "Sekretaris"
+                        ? "bg-white text-blue-800 shadow-lg"
+                        : "bg-blue-800 text-white hover:bg-blue-700"
+                    }`}
+                  >
+                    Sekretaris
+                  </button>
+                  <button
+                    onClick={() => setActiveTab("Bendahara")}
+                    className={`px-6 py-3 rounded-full font-medium transition-all whitespace-nowrap ${
+                      activeTab === "Bendahara"
+                        ? "bg-white text-blue-800 shadow-lg"
+                        : "bg-blue-800 text-white hover:bg-blue-700"
+                    }`}
+                  >
+                    Bendahara
+                  </button>
                   <button
                     onClick={() => setActiveTab("Rumah Tangga")}
                     className={`px-6 py-3 rounded-full font-medium transition-all whitespace-nowrap ${
@@ -400,7 +420,7 @@ const Layanan = () => {
             </div>
           </motion.div>
 
-          {/* Grid Divisi Staff */}
+          {/* Grid Staff Bidang */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {sortedSarana.map((item, index) => (
               <motion.div
