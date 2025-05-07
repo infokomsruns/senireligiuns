@@ -15,6 +15,8 @@ const SaranaAdmin = () => {
   const [newDescription, setNewDescription] = useState("");
 
   const divisi_staff = [
+    "Wakil Sekretaris Umum",
+    "Wakil Bendahara Umum",
     "Kepala Divisi Keaparatan Rumah Tangga",
     "Staff Divisi Keaparatan Rumah Tangga",
     "Kepala Divisi Kaderisasi Rumah Tangga",
