@@ -23,7 +23,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="fixed right-0 top-0 w-64 bg-gray-100 text-gray-700 min-h-screen p-6 shadow-lg">
+    <div className="w-64 bg-gray-100 text-gray-700 min-h-screen p-6">
       <ul>
         <li>
           <Link to="/admin-hero" className={getLinkClass("/admin-hero")}>
