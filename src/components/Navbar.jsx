@@ -30,21 +30,15 @@ const Navbar = () => {
 
   const handleNavigation = (path, section) => {
     setIsSidebarOpen(false);
-
-    // Special handling for Berita page tabs
+  
+    // Handle tabs in Lainnya page
     if (path === "/lainnya") {
-      if (section === "#galeri") {
-        navigate("/lainnya?tab=galeri");
-        return;
-      } else if (section === "#kelas") {
-        navigate("/lainnya?tab=kelas");
-        return;
-      } else if (section === "#artikel") {
-        navigate("/lainnya?tab=artikel");
-        return;
-      }
+      const tab = section.replace("#", "");
+      navigate(`/lainnya?tab=${tab}`);
+      return;
     }
-
+  
+    // Handle other pages
     navigate(path);
     setTimeout(() => {
       const element = document.querySelector(section);
