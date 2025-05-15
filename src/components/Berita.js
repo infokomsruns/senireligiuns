@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import LoadingSpinner from "./LoadingSpinner";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Berita = () => {
   const [news, setNews] = useState([]);
   const [galeri, setGaleri] = useState([]);
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("artikel");
   const location = useLocation();
@@ -33,6 +34,11 @@ const Berita = () => {
       })
       .finally(() => setIsLoading(false));
   }, [location.search]);
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    navigate(`/lainnya?tab=${tab}`, { replace: true });
+  };
 
   const truncateText = (text, length) => {
     if (text.length > length) {
@@ -108,7 +114,7 @@ const Berita = () => {
           <motion.div variants={itemVariants}>
             <div className="flex space-x-4">
               <button
-                onClick={() => setActiveTab("artikel")}
+                onClick={() => handleTabChange("artikel")}
                 className={`px-6 py-3 rounded-full font-medium transition-all ${
                   activeTab === "artikel"
                     ? "bg-white text-blue-800 shadow-lg"
@@ -119,7 +125,7 @@ const Berita = () => {
               </button>
 
               <button
-                onClick={() => setActiveTab("kelas")}
+                onClick={() => handleTabChange("kelas")}
                 className={`px-6 py-3 rounded-full font-medium transition-all ${
                   activeTab === "kelas"
                     ? "bg-white text-blue-800 shadow-lg"
@@ -130,7 +136,7 @@ const Berita = () => {
               </button>
 
               <button
-                onClick={() => setActiveTab("galeri")}
+                onClick={() => handleTabChange("galeri")}
                 className={`px-6 py-3 rounded-full font-medium transition-all ${
                   activeTab === "galeri"
                     ? "bg-white text-blue-800 shadow-lg"
