@@ -22,8 +22,7 @@
     "slick-carousel": "^1.8.1",
     "smpn1-tamansari": "file:",
     "swiper": "^11.1.15",
-    "web-vitals": "^4.2.4",
-    "homepage": "https://www.senireligiuns.com"
+    "web-vitals": "^4.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
