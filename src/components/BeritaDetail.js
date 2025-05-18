@@ -207,21 +207,6 @@ const BeritaDetail = ({
                 className="text-lg text-gray-800 leading-relaxed quill-description"
                 dangerouslySetInnerHTML={{ __html: beritaDetail.description }}
               />
-
-              {/* Tags Section */}
-              <div className="mt-8 pt-6 border-t border-gray-100">
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                    #SeniReligius
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                    #Berita
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                    #UNS
-                  </span>
-                </div>
-              </div>
             </div>
           </div>
 
