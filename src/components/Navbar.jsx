@@ -187,7 +187,7 @@ const Navbar = () => {
                       onClick={() => handleNavigation("/kepengurusan", "#divisi")}
                       className="block w-full text-left text-lg font-medium hover:text-blue-700 hover:bg-blue-50 p-2 rounded-md transition duration-300"
                     >
-                      Divisi Staff
+                      Staff Bidang
                     </button>
                   </div>
                 )}
@@ -349,7 +349,7 @@ const Navbar = () => {
                     onClick={() => handleNavigation("/kepengurusan", "#divisi")}
                     className="block text-lg font-medium hover:bg-blue-800 hover:text-white p-2 rounded-lg w-full transition duration-300 text-left"
                   >
-                    Divisi Staff
+                    Staff Bidang
                   </button>
                 </div>
               )}
