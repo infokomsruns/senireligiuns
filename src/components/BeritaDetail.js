@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { AiOutlineCalendar, AiOutlineShareAlt } from "react-icons/ai";
-import { FaFacebookF, FaTwitter, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import { FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { AiOutlineCopy } from "react-icons/ai";
 import LoadingSpinner from "./LoadingSpinner";
 
 const BeritaDetail = ({
@@ -16,6 +18,7 @@ const BeritaDetail = ({
   const [isBeritaLoading, setIsBeritaLoading] = useState(true);
   const [isOtherNewsLoading, setIsOtherNewsLoading] = useState(true);
   const [showShareOptions, setShowShareOptions] = useState(false);
+  const [copySuccess, setCopySuccess] = useState("");
 
   // Jika props tidak diberikan, gunakan nilai default
   const defaultUrl = `https://senireligiuns.vercel.app/artikel/${id}`;
@@ -25,12 +28,22 @@ const BeritaDetail = ({
     (beritaDetail
       ? beritaDetail.title
       : "Lihat berita menarik di Seni Religi UNS");
-  const shareSubject = propSubject || "Berita dari Seni Religi UNS";
-  const shareBody = propBody || "Baca berita menarik di Seni Religi UNS:";
 
   // Toggle tampilan share options
   const handleShareButtonClick = () => {
     setShowShareOptions((prev) => !prev);
+  };
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopySuccess("Link disalin!");
+      setTimeout(() => setCopySuccess(""), 2000);
+    } catch (err) {
+      console.error("Gagal menyalin:", err);
+      setCopySuccess("Gagal menyalin link");
+      setTimeout(() => setCopySuccess(""), 2000);
+    }
   };
 
   // Event handler untuk masing-masing platform share
@@ -53,13 +66,6 @@ const BeritaDetail = ({
       shareText + " " + shareUrl
     )}`;
     window.open(shareLink, "_blank", "noopener,noreferrer");
-  };
-
-  const handleEmailShare = () => {
-    const shareLink = `mailto:?subject=${encodeURIComponent(
-      shareSubject
-    )}&body=${encodeURIComponent(shareBody + " " + shareUrl)}`;
-    window.location.href = shareLink;
   };
 
   // Fetch berita detail
@@ -162,6 +168,21 @@ const BeritaDetail = ({
                     <div className="absolute right-0 mt-2 bg-white rounded-lg shadow-lg p-4 z-10 w-56 transition-opacity duration-300">
                       <div className="grid grid-cols-4 gap-2">
                         <button
+                          onClick={handleCopyLink}
+                          className="flex flex-col items-center justify-center gap-1 p-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
+                        >
+                          <AiOutlineCopy size={20} />
+                          <span className="text-xs">Salin</span>
+                        </button>
+
+                        <button
+                          onClick={handleWhatsAppShare}
+                          className="flex flex-col items-center justify-center gap-1 p-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+                        >
+                          <FaWhatsapp size={20} />
+                        </button>
+
+                        <button
                           onClick={handleFacebookShare}
                           className="flex flex-col items-center justify-center gap-1 p-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
                         >
@@ -169,23 +190,17 @@ const BeritaDetail = ({
                         </button>
                         <button
                           onClick={handleTwitterShare}
-                          className="flex flex-col items-center justify-center gap-1 p-2 bg-blue-400 text-white rounded hover:bg-blue-500 transition-colors"
+                          className="flex flex-col items-center justify-center gap-1 p-2 bg-black text-white rounded hover:bg-neutral-800 transition-colors"
                         >
-                          <FaTwitter size={20} />
-                        </button>
-                        <button
-                          onClick={handleWhatsAppShare}
-                          className="flex flex-col items-center justify-center gap-1 p-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
-                        >
-                          <FaWhatsapp size={20} />
-                        </button>
-                        <button
-                          onClick={handleEmailShare}
-                          className="flex flex-col items-center justify-center gap-1 p-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors"
-                        >
-                          <FaEnvelope size={20} />
+                          <FaXTwitter size={20} />
                         </button>
                       </div>
+                      {/* Notifikasi singkat */}
+                      {copySuccess && (
+                        <div className="mt-2 text-center text-sm text-gray-800">
+                          {copySuccess}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
