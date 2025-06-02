@@ -5,8 +5,8 @@ import LoadingSpinner from "./LoadingSpinner";
 const rolesOrder = [
   "Ketua",
   "Wakil Ketua",
-  "Kepala Bidang Sekretaris Umum",
-  "Kepala Bidang Bendahara Umum",
+  "Kepala Sekretaris Umum",
+  "Kepala Bendahara Umum",
   "Kepala Bidang Rumah Tangga",
   "Kepala Bidang Dakwah",
   "Kepala Bidang Informasi dan Komunikasi",
